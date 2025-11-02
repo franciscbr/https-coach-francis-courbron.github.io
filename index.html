@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programmes d'entraînement personnalisés par Francis Courbron, coach sportif spécialisé en perte de poids et remise en forme.">
+    <title>Programme d'Entraînement - Francis Courbron</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a44;
+            --secondary: #3b82f6;
+            --accent: #ef4444;
+            --light: #f1f5f9;
+            --dark: #111827;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            padding: 0.5rem 0.8rem;
+            transition: color 0.3s, background 0.3s;
+            border-radius: 8px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: clamp(1rem, 4vw, 1.5rem);
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero p {
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .section {
+            padding: clamp(1.5rem, 4vw, 3rem) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            color: var(--primary);
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+
+        .week-selector {
+            margin: 1rem auto;
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .week-selector select {
+            padding: 0.6rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            width: 100%;
+            cursor: pointer;
+            background: white;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .program-content {
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+        }
+
+        .program-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .program-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: clamp(0.8rem, 2vw, 0.85rem);
+        }
+
+        .program-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .program-content ul li {
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.8rem, 2vw, 0.85rem);
+        }
+
+        .program-image-container {
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .program-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .program-image-container::after {
+            content: 'Francis Courbron';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            color: white;
+            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+            opacity: 0.5;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .weekly-plan {
+            background: white;
+            color: #333;
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+            border-radius: 12px;
+            max-width: 600px;
+            margin: clamp(0.8rem, 2vw, 1.5rem) auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .weekly-plan h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .tips-section {
+            background-color: var(--light);
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+        }
+
+        .tip-card {
+            background: white;
+            padding: clamp(0.8rem, 2vw, 1.2rem);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tip-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+
+        .tip-card p {
+            font-size: clamp(0.75rem, 2vw, 0.8rem);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: clamp(0.75rem, 2vw, 0.8rem);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .social-links a {
+            margin-right: 0.8rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #bbb;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+
+        .back-to-top {
+            display: block;
+            margin: 1rem auto 0;
+            background: var(--accent);
+            color: white;
+            padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2vw, 1.2rem);
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: clamp(0.75rem, 2vw, 0.8rem);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .close:hover {
+            transform: scale(1.2);
+        }
+
+        /* Styles pour le système de connexion */
+        .login-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+        }
+
+        .login-modal, .logout-modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form, .logout-form {
+            background: white;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .login-form h3, .logout-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .form-actions .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .form-actions .btn-primary:hover {
+            background: #dc2626;
+        }
+
+        .form-actions .btn-secondary {
+            background: #ddd;
+            color: #333;
+        }
+
+        .form-actions .btn-secondary:hover {
+            background: #ccc;
+        }
+
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .user-info i {
+            font-size: 1.2rem;
+        }
+
+        /* Styles pour le tableau de suivi - Version Desktop */
+        .tracking-section {
+            background: white;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 12px;
+            margin: clamp(1rem, 3vw, 1.5rem) 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tracking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .tracking-table th, .tracking-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tracking-table th {
+            background-color: var(--light);
+            font-weight: 600;
+        }
+
+        .tracking-table input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        .tracking-table textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .tracking-table button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tracking-table button:hover {
+            background: #2563eb;
+        }
+
+        /* Styles pour le tableau de suivi - Version Mobile */
+        .tracking-cards {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tracking-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tracking-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tracking-card-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .tracking-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .tracking-card-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .tracking-card-field label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        .tracking-card-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tracking-card-checkbox input {
+            transform: scale(1.2);
+        }
+
+        .tracking-card textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 60px;
+            font-family: inherit;
+        }
+
+        .tracking-card button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .tracking-card button:hover {
+            background: #2563eb;
+        }
+
+        /* Styles pour les images différentes après connexion */
+        .user-specific-content {
+            display: none;
+        }
+
+        .logged-in .user-specific-content {
+            display: block;
+        }
+
+        .logged-in .guest-content {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Menu Backdrop */
+        .menu-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .menu-backdrop.active {
+            display: block;
+        }
+
+        /* Filtres améliorés */
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .filter-btn:hover {
+            background: var(--light);
+        }
+
+        /* Statistiques */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Section commentaires */
+        .comments-section {
+            background: white;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 12px;
+            margin: clamp(1rem, 3vw, 1.5rem) 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .comments-list {
+            margin-bottom: 2rem;
+        }
+
+        .comment {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .comment-date {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .comment-text {
+            color: #333;
+        }
+
+        .add-comment-form {
+            margin-top: 1.5rem;
+        }
+
+        .add-comment-form h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Message d'accès limité */
+        .access-limited {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .access-limited h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .access-limited p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                max-width: 250px;
+                height: 100%;
+                background: var(--primary);
+                padding: 4rem 1rem 1rem;
+                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1001;
+            }
+
+            nav.active {
+                display: block;
+                transform: translateX(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            nav ul li a {
+                font-size: clamp(1rem, 3vw, 1.1rem);
+                padding: 0.8rem 1rem;
+                display: block;
+            }
+
+            .menu-backdrop.active {
+                display: block;
+            }
+
+            .hero {
+                min-height: 40vh;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.6rem, 4.5vw, 2rem);
+            }
+
+            .hero p {
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
+            }
+
+            .section {
+                padding: clamp(1rem, 3vw, 1.5rem) 0;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .weekly-plan {
+                padding: clamp(0.6rem, 2vw, 1rem);
+            }
+
+            .program-img {
+                height: 140px;
+            }
+
+            .program-content {
+                padding: clamp(0.6rem, 1.5vw, 0.8rem);
+            }
+
+            .program-content h3 {
+                font-size: clamp(0.9rem, 2vw, 1rem);
+            }
+
+            .program-content p, .program-content ul li {
+                font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+            }
+
+            .week-selector select {
+                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            }
+
+            .modal-content {
+                max-height: 65vh;
+            }
+
+            /* Tableau de suivi responsive */
+            .tracking-table {
+                display: none;
+            }
+
+            .tracking-cards {
+                display: flex;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .tracking-table {
+                display: table;
+            }
+            
+            .tracking-cards {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tracking-card {
+                padding: 0.8rem;
+            }
+            
+            .tracking-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-backdrop"></div>
+    
+    <!-- Modal de connexion -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-form">
+            <h3>Connexion</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelLogin">Annuler</button>
+                    <button type="submit" class="btn-primary">Se connecter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de déconnexion -->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-form">
+            <h3>Déconnexion</h3>
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" id="cancelLogout">Annuler</button>
+                <button type="button" class="btn-primary" id="confirmLogout">Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal pour images -->
+    <div id="imageModal" class="modal">
+        <span class="close" aria-label="Fermer">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Francis <span>Courbron</span></div>
+                <button class="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#programmes">Programmes</a></li>
+                        <li><a href="#conseils">Conseils</a></li>
+                        <li><a href="#suivi">Suivi</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li id="loginNavItem">
+                            <button class="login-btn" id="loginBtn">Se connecter</button>
+                            <div class="user-info" id="userInfo">
+                                <i class="fas fa-user"></i>
+                                <span id="userName"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="accueil" data-aos="fade-up">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformez Votre Corps avec Francis Courbron</h1>
+                <p>Bonjour, je suis Francis Courbron, coach sportif certifié spécialisé en perte de poids et bien-être. Découvrez mes programmes personnalisés et mes conseils pour une vie plus saine.</p>
+                <div>
+                    <a href="#programmes" class="btn">Voir les Programmes</a>
+                    <a href="#conseils" class="btn btn-outline">Conseils Gratuits</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="programmes" data-aos="fade-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Programmes d'Entraînement</h2>
+                <p>12 jours d'entraînement répartis sur 4 semaines, avec un jour facultatif chaque semaine pour une progression optimale.</p>
+            </div>
+            
+            <div class="week-selector">
+                <select id="week-select">
+                    <option value="1">Semaine 1 (Jours 1-3)</option>
+                    <option value="2">Semaine 2 (Jours 4-6)</option>
+                    <option value="3">Semaine 3 (Jours 7-9)</option>
+                    <option value="4">Semaine 4 (Jours 10-12)</option>
+                </select>
+            </div>
+            
+            <div class="filters-container">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="strength">Force</button>
+                <button class="filter-btn" data-filter="cardio">Cardio</button>
+                <button class="filter-btn" data-filter="flexibility">Flexibilité</button>
+            </div>
+            
+            <div class="guest-content">
+                <button id="randomize-btn" class="btn" style="display: block; margin: 1.5rem auto;">Générer Programme Aléatoire</button>
+            </div>
+            
+            <!-- Contenu pour utilisateurs non connectés (semaine 1 uniquement) -->
+            <div class="guest-content" id="guest-programs">
+                <div class="programs-grid" id="programs-grid">
+                    <!-- Contenu généré dynamiquement -->
+                </div>
+            </div>
+            
+            <!-- Contenu pour utilisateurs connectés (toutes les semaines) -->
+            <div class="user-specific-content" id="user-programs">
+                <div class="programs-grid" id="user-programs-grid">
+                    <!-- Contenu généré dynamiquement -->
+                </div>
+            </div>
+            
+            <!-- Message d'accès limité pour les semaines 2-4 pour utilisateurs non connectés -->
+            <div class="guest-content" id="limited-access" style="display: none;">
+                <div class="access-limited">
+                    <h3>Accès limité aux semaines 2, 3 et 4</h3>
+                    <p>Connectez-vous pour accéder à tous les programmes d'entraînement des semaines 2, 3 et 4, ainsi qu'au tableau de suivi personnalisé.</p>
+                    <button class="btn" id="loginAccessBtn">Se connecter pour accéder</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="suivi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tableau de Suivi</h2>
+                <p>Marquez votre progression et notez vos entraînements pour suivre votre évolution.</p>
+            </div>
+            
+            <div class="user-specific-content">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 id="completedWorkouts">0</h3>
+                        <p>Séances terminées</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="completionRate">0%</h3>
+                        <p>Taux de complétion</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="currentStreak">0</h3>
+                        <p>Jours consécutifs</p>
+                    </div>
+                </div>
+                
+                <div class="tracking-section">
+                    <h3>Suivi de la semaine <span id="currentWeekDisplay">1</span></h3>
+                    
+                    <!-- Version Desktop (tableau) -->
+                    <table class="tracking-table">
+                        <thead>
+                            <tr>
+                                <th>Jour</th>
+                                <th>Exercice</th>
+                                <th>Réalisé</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trackingTableBody">
+                            <!-- Contenu généré dynamiquement -->
+                        </tbody>
+                    </table>
+                    
+                    <!-- Version Mobile (cartes) -->
+                    <div class="tracking-cards" id="trackingCards">
+                        <!-- Contenu généré dynamiquement -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guest-content">
+                <div class="weekly-plan">
+                    <h3>Connectez-vous pour accéder au tableau de suivi</h3>
+                    <p>Le tableau de suivi vous permet de marquer vos entraînements réalisés et de prendre des notes sur votre progression.</p>
+                    <button class="btn" id="loginPromptBtn">Se connecter</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tips-section" id="conseils" data-aos="fade-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Conseils d'Entraînement & Nutrition</h2>
+                <p>Recommandations professionnelles pour maximiser vos résultats et rester en bonne santé.</p>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-running"></i> Échauffement</h3>
+                    <p>Commencez par 5-10 min sur tapis roulant (max 10 km/h) pour préparer le corps.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-people-arrows"></i> Étirements</h3>
+                    <p>Terminez par des étirements légers (20-30s par muscle) pour la récupération.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-tint"></i> Hydratation</h3>
+                    <p>Buvez 2-3L d'eau/jour. Si transpiration intense, ajoutez électrolytes.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-lungs"></i> Respiration</h3>
+                    <p>Expirez à l'effort, inspirez au retour pour meilleure performance.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-user-check"></i> Posture</h3>
+                    <p>Dos droit, épaules basses. Filmez-vous pour corriger les erreurs.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-bed"></i> Récupération</h3>
+                    <p>Arrêtez si douleur aiguë. Dormez 7-8h/nuit pour progresser.</p>
+                </div>
+                
+                <div class="tip-card" data-aos="zoom-in">
+                    <h3><i class="fas fa-apple-alt"></i> Nutrition</h3>
+                    <p>Repas équilibrés : protéines (poulet, œufs), veggies, évitez sucres. Déficit calorique pour perte de poids.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="commentaires">
+        <div class="container">
+            <div class="section-title">
+                <h2>Espace Commentaires</h2>
+                <p>Partagez vos expériences et posez vos questions.</p>
+            </div>
+            
+            <div class="comments-section">
+                <div class="comments-list" id="commentsList">
+                    <!-- Commentaires fictifs pour les non-connectés -->
+                    <div class="guest-content">
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Marie D.</span>
+                                <span class="comment-date">25/10/2025</span>
+                            </div>
+                            <p class="comment-text">Super programme ! J'ai perdu 5 kg en un mois grâce à ces exercices. Francis est un excellent coach !</p>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Thomas L.</span>
+                                <span class="comment-date">22/10/2025</span>
+                            </div>
+                            <p class="comment-text">Les conseils nutritionnels m'ont beaucoup aidé. Je me sens plus énergique et en meilleure forme.</p>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">Sophie M.</span>
+                                <span class="comment-date">18/10/2025</span>
+                            </div>
+                            <p class="comment-text">J'adore la variété des exercices. Chaque semaine apporte de nouveaux défis. Merci Francis !</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Commentaires réels pour les utilisateurs connectés -->
+                    <div class="user-specific-content" id="userComments">
+                        <!-- Les commentaires réels seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+                
+                <!-- Formulaire d'ajout de commentaire (visible uniquement pour les utilisateurs connectés) -->
+                <div class="user-specific-content">
+                    <div class="add-comment-form">
+                        <h4>Ajouter un commentaire</h4>
+                        <form id="addCommentForm">
+                            <div class="form-group">
+                                <textarea id="commentText" placeholder="Partagez votre expérience..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Publier le commentaire</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Invitation à se connecter pour commenter -->
+                <div class="guest-content">
+                    <div class="weekly-plan">
+                        <h3>Connectez-vous pour partager votre expérience</h3>
+                        <p>Rejoignez la communauté pour échanger avec d'autres membres et partager vos progrès.</p>
+                        <button class="btn" id="loginCommentBtn">Se connecter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" data-aos="fade-up">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Francis Courbron</h3>
+                    <p>Coach sportif certifié, spécialisé en perte de poids, tonification et santé globale.</p>
+                    <div class="social-links">
+                        <a href=" https://www.facebook.com/share/1FD9yscALk/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/franciscourbron1?igsh=MTAwOTdhaWZobm94dA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Programmes</h3>
+                    <ul>
+                        <li><a href="#programmes">Semaine 1 : Jours 1-3</a></li>
+                        <li><a href="#programmes">Semaine 2 : Jours 4-6</a></li>
+                        <li><a href="#programmes">Semaine 3 : Jours 7-9</a></li>
+                        <li><a href="#programmes">Semaine 4 : Jours 10-12</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Conseils</h3>
+                    <ul>
+                        <li><a href="#conseils">Échauffement & Étirements</a></li>
+                        <li><a href="#conseils">Hydratation & Nutrition</a></li>
+                        <li><a href="#conseils">Posture & Respiration</a></li>
+                        <li><a href="#conseils">Récupération</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:franciscourbron02@gmail.com">franciscourbron02@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="#accueil" class="back-to-top">Retour en Haut</a>
+            <div class="copyright">
+                <p>&copy; 2025 Francis Courbron - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialisation AOS
+        AOS.init({ duration: 1000, once: true });
+
+        // Menu hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const backdrop = document.querySelector('.menu-backdrop');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            backdrop.classList.toggle('active');
+        });
+
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('active');
+            backdrop.classList.remove('active');
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    backdrop.classList.remove('active');
+                }
+            });
+        });
+
+        // Données des programmes pour 12 jours avec images en ligne
+        const dayData = {
+            '1': {
+                title: 'Dos & Biceps',
+                icon: 'fa-dumbbell',
+                description: 'Séance axée sur le développement du dos et des biceps. Hydratez-vous bien et arrêtez si douleur aiguë.',
+                exercises: ['Tractions : 3 séries de 10', 'Rowing barre : 3 séries de 12', 'Curl biceps : 3 séries de 15'],
+                image: 'jour1.jpeg',
+                background: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'strength'
+            },
+            '2': {
+                title: 'Pectoraux & Triceps',
+                icon: 'fa-weight-hanging',
+                description: 'Séance intensive pour la poitrine et les triceps. Concentrez-vous sur la posture et les repas équilibrés post-séance.',
+                exercises: ['Développé couché : 3 séries de 10', 'Dips : 3 séries de 12', 'Extensions triceps : 3 séries de 15'],
+                image: 'jour2.jpeg',
+                background: 'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'strength'
+            },
+            '3': {
+                title: 'Corps Complet',
+                icon: 'fa-running',
+                description: 'Séance globale pour tout le corps. Idéal pour la forme générale et la santé.',
+                exercises: ['Squats : 3 séries de 12', 'Pompes : 3 séries de 15', 'Planche : 3x30s'],
+                image: 'jour3.jpg',
+                background: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'strength'
+            },
+            '4': {
+                title: 'Cardio Intensif',
+                icon: 'fa-heartbeat',
+                description: 'Séance cardiovasculaire pour améliorer l\'endurance et brûler des calories.',
+                exercises: ['Course à pied : 20 min', 'Corde à sauter : 3 séries de 2 min', 'Burpees : 3 séries de 10'],
+                image: 'jour4.jpeg',
+                background: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'cardio'
+            },
+            '5': {
+                title: 'Épaules & Abdominaux',
+                icon: 'fa-dumbbell',
+                description: 'Séance pour développer les épaules et renforcer la sangle abdominale.',
+                exercises: ['Développé militaire : 3 séries de 10', 'Élévations latérales : 3 séries de 12', 'Crunch : 3 séries de 20'],
+                image: 'jour5.jpeg',
+                background: 'https://i.ytimg.com/vi/eBLj0RWKrbg/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWShRMA8=&rs=AOn4CLA6qvm3-PH3wigXtdIAVbHzwG57eQ',
+                category: 'strength'
+            },
+            '6': {
+                title: 'Jambes & Fessiers',
+                icon: 'fa-running',
+                description: 'Séance intensive pour le bas du corps. Pensez à bien vous étirer après.',
+                exercises: ['Squats : 4 séries de 10', 'Fentes : 3 séries de 12', 'Soulevé de terre : 3 séries de 10'],
+                image: 'jour6.jpeg',
+                background: ' https://tse1.mm.bing.net/th/id/OIP.hp-H-rQ-JbCjQGFW1_lh1wHaE8?pid=ImgDet&w=474&h=316&rs=1&o=7&rm=3',
+                category: 'strength'
+            },
+            '7': {
+                title: 'HIIT Cardio',
+                icon: 'fa-bolt',
+                description: 'Entraînement par intervalles à haute intensité pour maximiser la combustion des graisses.',
+                exercises: ['Sprints : 8x30s', 'Mountain climbers : 3 séries de 20', 'Sauts écart : 3 séries de 15'],
+                image: 'jour7.jpeg',
+                background: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'cardio'
+            },
+            '8': {
+                title: 'Haut du Corps',
+                icon: 'fa-dumbbell',
+                description: 'Séance complète pour le haut du corps. Travaillez tous les groupes musculaires.',
+                exercises: ['Développé couché : 3 séries de 10', 'Tirage vertical : 3 séries de 12', 'Élévations latérales : 3 séries de 15'],
+                image: 'jour8.jpeg',
+                background: 'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'strength'
+            },
+            '9': {
+                title: 'Yoga & Mobilité',
+                icon: 'fa-spa',
+                description: 'Séance de yoga pour améliorer la mobilité et la flexibilité. Idéal pour la récupération.',
+                exercises: ['Postures de yoga : 30 min', 'Étirements profonds : 15 min', 'Respiration contrôlée : 10 min'],
+                image: 'jour9.jpeg',
+                background: 'https://images.squarespace-cdn.com/content/v1/62635e9fbce1d12cfbbfe360/1659384251464-WWD0CVEQ54DA8WR123Q8/DSC06264.jpg?format=1000w',
+                category: 'flexibility'
+            },
+            '10': {
+                title: 'Full Body Strength',
+                icon: 'fa-dumbbell',
+                description: 'Séance de force complète pour tout le corps. Augmentez progressivement les charges.',
+                exercises: ['Squats : 4 séries de 8', 'Développé couché : 4 séries de 8', 'Soulevé de terre : 3 séries de 6'],
+                image: 'jour10.jpeg',
+                background: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'strength'
+            },
+            '11': {
+                title: 'Endurance Cardio',
+                icon: 'fa-road',
+                description: 'Séance d\'endurance cardiovasculaire pour améliorer votre condition physique générale.',
+                exercises: ['Course longue distance : 40 min', 'Vélo : 30 min', 'Natation : 20 min'],
+                image: 'jour11.jpeg',
+                background: 'https://www.clever-fit.com/app/uploads/2022/10/34_clever_fit_2022_09_Print_KS_07011-3.jpg',
+                category: 'cardio'
+            },
+            '12': {
+                title: 'Récupération Active',
+                icon: 'fa-wind',
+                description: 'Séance légère pour favoriser la récupération et prévenir les courbatures.',
+                exercises: ['Marche rapide : 30 min', 'Étirements dynamiques : 15 min', 'Foam rolling : 10 min'],
+                image: 'jour12.jpeg',
+                background: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'flexibility'
+            },
+            'facultatif': {
+                title: 'Facultatif',
+                icon: 'fa-plus-circle',
+                description: 'Séance optionnelle pour intensifier. Choisissez si vous vous sentez en forme.',
+                exercises: ['Cardio HIIT : 20 min', 'Abdos : 3 séries de 20', 'Exercices au choix : 15 min'],
+                image: 'jour extra.jpeg',
+                background: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
+                category: 'cardio'
+            }
+        };
+
+        // Gestion des semaines
+        const weekSelect = document.getElementById('week-select');
+        const randomizeBtn = document.getElementById('randomize-btn');
+        const grid = document.getElementById('programs-grid');
+        const userGrid = document.getElementById('user-programs-grid');
+        const trackingTableBody = document.getElementById('trackingTableBody');
+        const trackingCards = document.getElementById('trackingCards');
+        const currentWeekDisplay = document.getElementById('currentWeekDisplay');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const limitedAccess = document.getElementById('limited-access');
+        const guestPrograms = document.getElementById('guest-programs');
+        const loginAccessBtn = document.getElementById('loginAccessBtn');
+
+        // Informations de connexion intégrées
+        const validCredentials = {
+            username: 'François',
+            password: 'entrainement2025'
+        };
+
+        // Éléments de connexion
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        const cancelLogin = document.getElementById('cancelLogin');
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const loginPromptBtn = document.getElementById('loginPromptBtn');
+        const loginCommentBtn = document.getElementById('loginCommentBtn');
+        const loginNavItem = document.getElementById('loginNavItem');
+
+        // Éléments de déconnexion
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogout = document.getElementById('cancelLogout');
+        const confirmLogout = document.getElementById('confirmLogout');
+
+        // Éléments de statistiques
+        const completedWorkoutsEl = document.getElementById('completedWorkouts');
+        const completionRateEl = document.getElementById('completionRate');
+        const currentStreakEl = document.getElementById('currentStreak');
+
+        // Éléments de commentaires
+        const commentsList = document.getElementById('commentsList');
+        const userComments = document.getElementById('userComments');
+        const addCommentForm = document.getElementById('addCommentForm');
+        const commentText = document.getElementById('commentText');
+
+        // Vérifier si l'utilisateur est déjà connecté
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const savedUsername = localStorage.getItem('username');
+            
+            if (isLoggedIn && savedUsername) {
+                document.body.classList.add('logged-in');
+                loginBtn.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userName.textContent = savedUsername;
+            } else {
+                document.body.classList.remove('logged-in');
+                loginBtn.style.display = 'block';
+                userInfo.style.display = 'none';
+            }
+            
+            // Mettre à jour l'affichage des programmes
+            updateGrid(weekSelect.value);
+            updateTrackingTable(weekSelect.value);
+            updateStats();
+            loadUserComments();
+        }
+
+        // Gestion de la connexion
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        loginPromptBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        loginCommentBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        loginAccessBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        cancelLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+            loginForm.reset();
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === validCredentials.username && password === validCredentials.password) {
+                // Connexion réussie
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+                
+                loginModal.style.display = 'none';
+                loginForm.reset();
+                
+                checkLoginStatus();
+            } else {
+                alert('Nom d\'utilisateur ou mot de passe incorrect.');
+            }
+        });
+
+        // Gestion de la déconnexion
+        userInfo.addEventListener('click', () => {
+            logoutModal.style.display = 'flex';
+        });
+
+        cancelLogout.addEventListener('click', () => {
+            logoutModal.style.display = 'none';
+        });
+
+        confirmLogout.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            logoutModal.style.display = 'none';
+            checkLoginStatus();
+        });
+
+        // Fonctions pour les programmes
+        const getWeekPlan = (week) => {
+            const plans = JSON.parse(localStorage.getItem('weeklyPlans')) || {
+                1: ['1', '2', '3'],
+                2: ['4', '5', '6'],
+                3: ['7', '8', '9'],
+                4: ['10', '11', '12']
+            };
+            return plans[week] || ['1', '2', '3'];
+        };
+
+        const saveWeekPlan = (week, days) => {
+            const plans = JSON.parse(localStorage.getItem('weeklyPlans')) || {};
+            plans[week] = days;
+            localStorage.setItem('weeklyPlans', JSON.stringify(plans));
+        };
+
+        const updateGrid = (week) => {
+            const isLoggedIn = document.body.classList.contains('logged-in');
+            const days = getWeekPlan(week);
+            
+            // Gérer l'affichage selon le statut de connexion et la semaine sélectionnée
+            if (!isLoggedIn && week > 1) {
+                // Utilisateur non connecté essayant d'accéder aux semaines 2-4
+                guestPrograms.style.display = 'none';
+                limitedAccess.style.display = 'block';
+                return;
+            } else {
+                guestPrograms.style.display = 'block';
+                limitedAccess.style.display = 'none';
+            }
+            
+            // Mettre à jour la grille pour les utilisateurs non connectés (semaine 1 uniquement)
+            if (!isLoggedIn) {
+                grid.innerHTML = '';
+                
+                days.forEach((day, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('program-card');
+                    card.dataset.day = day;
+                    card.dataset.category = dayData[day].category;
+                    card.dataset.aos = 'zoom-in';
+                    
+                    const imageUrl = dayData[day].background;
+                    
+                    card.innerHTML = `
+                        <div class="program-img" style="background-image: url('${imageUrl}');"></div>
+                        <div class="program-content">
+                            <h3><i class="fas ${dayData[day].icon}"></i> Jour ${parseInt(day) + (week-1)*3} : ${dayData[day].title}</h3>
+                            <p>${dayData[day].description}</p>
+                            <ul>${dayData[day].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
+                            <div class="program-image-container">
+                                <img src="${dayData[day].image}" class="program-image" alt="Programme Jour ${parseInt(day) + (week-1)*3}" data-fullsrc="${dayData[day].image}">
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                
+                // Ajouter le jour facultatif
+                const card = document.createElement('div');
+                card.classList.add('program-card');
+                card.dataset.day = 'facultatif';
+                card.dataset.category = dayData['facultatif'].category;
+                card.dataset.aos = 'zoom-in';
+                
+                const imageUrl = dayData['facultatif'].background;
+                
+                card.innerHTML = `
+                    <div class="program-img" style="background-image: url('${imageUrl}');"></div>
+                    <div class="program-content">
+                        <h3><i class="fas ${dayData['facultatif'].icon}"></i> Jour Facultatif : ${dayData['facultatif'].title}</h3>
+                        <p>${dayData['facultatif'].description}</p>
+                        <ul>${dayData['facultatif'].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
+                        <div class="program-image-container">
+                            <img src="${dayData['facultatif'].image}" class="program-image" alt="Programme Jour Facultatif" data-fullsrc="${dayData['facultatif'].image}">
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            }
+            
+            // Mettre à jour la grille pour les utilisateurs connectés (toutes les semaines)
+            if (isLoggedIn) {
+                userGrid.innerHTML = '';
+                
+                days.forEach((day, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('program-card');
+                    card.dataset.day = day;
+                    card.dataset.category = dayData[day].category;
+                    card.dataset.aos = 'zoom-in';
+                    
+                    const imageUrl = dayData[day].background;
+                    
+                    card.innerHTML = `
+                        <div class="program-img" style="background-image: url('${imageUrl}');"></div>
+                        <div class="program-content">
+                            <h3><i class="fas ${dayData[day].icon}"></i> Jour ${parseInt(day) + (week-1)*3} : ${dayData[day].title}</h3>
+                            <p>${dayData[day].description}</p>
+                            <ul>${dayData[day].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
+                            <div class="program-image-container">
+                                <img src="${dayData[day].image}" class="program-image" alt="Programme Jour ${parseInt(day) + (week-1)*3}" data-fullsrc="${dayData[day].image}">
+                            </div>
+                        </div>
+                    `;
+                    userGrid.appendChild(card);
+                });
+                
+                // Ajouter le jour facultatif
+                const card = document.createElement('div');
+                card.classList.add('program-card');
+                card.dataset.day = 'facultatif';
+                card.dataset.category = dayData['facultatif'].category;
+                card.dataset.aos = 'zoom-in';
+                
+                const imageUrl = dayData['facultatif'].background;
+                
+                card.innerHTML = `
+                    <div class="program-img" style="background-image: url('${imageUrl}');"></div>
+                    <div class="program-content">
+                        <h3><i class="fas ${dayData['facultatif'].icon}"></i> Jour Facultatif : ${dayData['facultatif'].title}</h3>
+                        <p>${dayData['facultatif'].description}</p>
+                        <ul>${dayData['facultatif'].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
+                        <div class="program-image-container">
+                            <img src="${dayData['facultatif'].image}" class="program-image" alt="Programme Jour Facultatif" data-fullsrc="${dayData['facultatif'].image}">
+                        </div>
+                    </div>
+                `;
+                userGrid.appendChild(card);
+            }
+            
+            AOS.refresh();
+        };
+
+        // Fonction pour mettre à jour le tableau de suivi
+        const updateTrackingTable = (week) => {
+            currentWeekDisplay.textContent = week;
+            trackingTableBody.innerHTML = '';
+            trackingCards.innerHTML = '';
+            
+            const days = getWeekPlan(week);
+            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
+            const weekData = trackingData[week] || {};
+            
+            days.forEach((day, index) => {
+                const dayNumber = parseInt(day) + (week-1)*3;
+                const dayTracking = weekData[dayNumber] || { completed: false, notes: '' };
+                
+                // Version Desktop (tableau)
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>Jour ${dayNumber}</td>
+                    <td>${dayData[day].title}</td>
+                    <td><input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="${dayNumber}" data-week="${week}"></td>
+                    <td><textarea data-day="${dayNumber}" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea></td>
+                    <td><button class="save-btn" data-day="${dayNumber}" data-week="${week}">Enregistrer</button></td>
+                `;
+                trackingTableBody.appendChild(row);
+                
+                // Version Mobile (cartes)
+                const card = document.createElement('div');
+                card.classList.add('tracking-card');
+                card.innerHTML = `
+                    <div class="tracking-card-header">
+                        <div class="tracking-card-title">Jour ${dayNumber} : ${dayData[day].title}</div>
+                    </div>
+                    <div class="tracking-card-content">
+                        <div class="tracking-card-field">
+                            <label>Réalisé :</label>
+                            <div class="tracking-card-checkbox">
+                                <input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="${dayNumber}" data-week="${week}">
+                                <span>Séance terminée</span>
+                            </div>
+                        </div>
+                        <div class="tracking-card-field">
+                            <label>Notes :</label>
+                            <textarea data-day="${dayNumber}" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea>
+                        </div>
+                        <button class="save-btn" data-day="${dayNumber}" data-week="${week}">Enregistrer</button>
+                    </div>
+                `;
+                trackingCards.appendChild(card);
+            });
+            
+            // Ajouter le jour facultatif
+            const dayTracking = weekData['facultatif'] || { completed: false, notes: '' };
+            
+            // Version Desktop (tableau)
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>Jour Facultatif</td>
+                <td>${dayData['facultatif'].title}</td>
+                <td><input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="facultatif" data-week="${week}"></td>
+                <td><textarea data-day="facultatif" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea></td>
+                <td><button class="save-btn" data-day="facultatif" data-week="${week}">Enregistrer</button></td>
+            `;
+            trackingTableBody.appendChild(row);
+            
+            // Version Mobile (cartes)
+            const card = document.createElement('div');
+            card.classList.add('tracking-card');
+            card.innerHTML = `
+                <div class="tracking-card-header">
+                    <div class="tracking-card-title">Jour Facultatif : ${dayData['facultatif'].title}</div>
+                </div>
+                <div class="tracking-card-content">
+                    <div class="tracking-card-field">
+                        <label>Réalisé :</label>
+                        <div class="tracking-card-checkbox">
+                            <input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="facultatif" data-week="${week}">
+                            <span>Séance terminée</span>
+                        </div>
+                    </div>
+                    <div class="tracking-card-field">
+                        <label>Notes :</label>
+                        <textarea data-day="facultatif" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea>
+                    </div>
+                    <button class="save-btn" data-day="facultatif" data-week="${week}">Enregistrer</button>
+                </div>
+            `;
+            trackingCards.appendChild(card);
+            
+            // Ajouter des écouteurs d'événements pour les boutons d'enregistrement
+            document.querySelectorAll('.save-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const day = this.dataset.day;
+                    const week = this.dataset.week;
+                    const checkbox = document.querySelector(`input[data-day="${day}"][data-week="${week}"]`);
+                    const textarea = document.querySelector(`textarea[data-day="${day}"][data-week="${week}"]`);
+                    
+                    saveTrackingData(week, day, checkbox.checked, textarea.value);
+                    updateStats();
+                    alert('Données enregistrées avec succès!');
+                });
+            });
+        };
+
+        // Fonction pour sauvegarder les données de suivi
+        const saveTrackingData = (week, day, completed, notes) => {
+            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
+            if (!trackingData[week]) trackingData[week] = {};
+            
+            trackingData[week][day] = {
+                completed: completed,
+                notes: notes
+            };
+            
+            localStorage.setItem('trackingData', JSON.stringify(trackingData));
+        };
+
+        // Fonction pour mettre à jour les statistiques
+        const updateStats = () => {
+            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
+            let completedCount = 0;
+            let totalCount = 0;
+            let currentStreak = 0;
+            
+            // Calculer les statistiques
+            Object.keys(trackingData).forEach(week => {
+                Object.keys(trackingData[week]).forEach(day => {
+                    totalCount++;
+                    if (trackingData[week][day].completed) {
+                        completedCount++;
+                    }
+                });
+            });
+            
+            // Calculer le streak (simplifié)
+            const weeks = Object.keys(trackingData).sort();
+            for (let i = weeks.length - 1; i >= 0; i--) {
+                const week = weeks[i];
+                const days = Object.keys(trackingData[week]);
+                const completedDays = days.filter(day => trackingData[week][day].completed);
+                if (completedDays.length >= 3) {
+                    currentStreak++;
+                } else {
+                    break;
+                }
+            }
+            
+            // Mettre à jour l'affichage
+            completedWorkoutsEl.textContent = completedCount;
+            completionRateEl.textContent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) + '%' : '0%';
+            currentStreakEl.textContent = currentStreak;
+        };
+
+        // Fonction pour charger les commentaires de l'utilisateur
+        const loadUserComments = () => {
+            const comments = JSON.parse(localStorage.getItem('userComments')) || [];
+            userComments.innerHTML = '';
+            
+            comments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.classList.add('comment');
+                commentEl.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${comment.author}</span>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <p class="comment-text">${comment.text}</p>
+                `;
+                userComments.appendChild(commentEl);
+            });
+        };
+
+        // Fonction pour ajouter un commentaire
+        addCommentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const text = commentText.value.trim();
+            if (!text) return;
+            
+            const username = localStorage.getItem('username');
+            const date = new Date().toLocaleDateString('fr-FR');
+            
+            const newComment = {
+                author: username,
+                date: date,
+                text: text
+            };
+            
+            const comments = JSON.parse(localStorage.getItem('userComments')) || [];
+            comments.push(newComment);
+            localStorage.setItem('userComments', JSON.stringify(comments));
+            
+            commentText.value = '';
+            loadUserComments();
+            alert('Commentaire publié avec succès!');
+        });
+
+        // Filtrage des programmes
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Retirer la classe active de tous les boutons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const cards = document.querySelectorAll('.program-card');
+                
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Randomisation
+        randomizeBtn.addEventListener('click', () => {
+            const week = weekSelect.value;
+            const allDays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            const weekDays = allDays.slice((week-1)*3, (week-1)*3+3);
+            const shuffledDays = weekDays.sort(() => Math.random() - 0.5);
+            saveWeekPlan(week, shuffledDays);
+            updateGrid(week);
+            updateTrackingTable(week);
+        });
+
+        // Sélection de la semaine
+        weekSelect.addEventListener('change', () => {
+            const week = weekSelect.value;
+            updateGrid(week);
+            updateTrackingTable(week);
+        });
+
+        // Modal pour images
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('program-image')) {
+                modal.style.display = 'flex';
+                modalImg.src = e.target.dataset.fullsrc;
+            }
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === loginModal || e.target === logoutModal) {
+                modal.style.display = 'none';
+                loginModal.style.display = 'none';
+                logoutModal.style.display = 'none';
+            }
+        });
+
+        // Initialisation
+        checkLoginStatus();
+        updateGrid(1);
+        updateTrackingTable(1);
+        updateStats();
+    </script>
+</body>
+</html>
