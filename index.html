@@ -2,13 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Programmes d'entraînement personnalisés par Francis Courbron, coach sportif spécialisé en perte de poids et remise en forme.">
     <title>Programme d'Entraînement - Francis Courbron</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         :root {
             --primary: #1a2a44;
             --secondary: #3b82f6;
@@ -20,13 +27,6 @@
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
             background-color: var(--light);
             color: #333;
@@ -34,10 +34,11 @@
             overflow-x: hidden;
         }
 
+        /* Header */
         header {
             background: var(--gradient);
             color: white;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             position: sticky;
             top: 0;
@@ -45,437 +46,313 @@
         }
 
         .container {
-            width: 90%;
+            width: 92%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 0.5rem;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
             font-weight: 700;
-            letter-spacing: 1px;
         }
 
-        .logo span {
-            color: var(--accent);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
+        .logo span { color: var(--accent); }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: clamp(0.8rem, 2vw, 1.5rem);
+            gap: clamp(0.5rem, 2vw, 1.2rem);
+            flex-wrap: wrap;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            padding: 0.5rem 0.8rem;
-            transition: color 0.3s, background 0.3s;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            padding: 0.4rem 0.6rem;
+            transition: all 0.3s;
             border-radius: 8px;
+            white-space: nowrap;
         }
 
         nav ul li a:hover {
             color: var(--accent);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
         }
+
+        /* Lien Défi Complet caché pour non connectés */
+        .nav-defi-complet { display: none; }
+        .logged-in .nav-defi-complet { display: list-item; }
 
         .hamburger {
             display: none;
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            font-size: 1.5rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
             padding: 0.5rem;
-            z-index: 1001;
-        }
-
-        .hamburger:hover {
-            color: var(--accent);
-        }
-
-        .hero {
-            background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            padding: clamp(1rem, 4vw, 1.5rem);
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .hero p {
-            font-size: clamp(0.85rem, 2.5vw, 1rem);
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
         }
 
         .btn {
             display: inline-block;
             background: var(--accent);
             color: white;
-            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            padding: 0.6rem 1.2rem;
             border: none;
             border-radius: 50px;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-size: 0.85rem;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 600;
         }
 
-        .btn:hover {
-            background: #dc2626;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
+        .btn:hover { background: #dc2626; transform: scale(1.02); }
 
         .section {
-            padding: clamp(1.5rem, 4vw, 3rem) 0;
+            padding: 2rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         .section-title h2 {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: var(--primary);
         }
 
         .section-title p {
             color: #666;
-            max-width: 600px;
-            margin: 0 auto;
             font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
-        .week-selector {
-            margin: 1rem auto;
-            max-width: 250px;
-            text-align: center;
-        }
-
-        .week-selector select {
-            padding: 0.6rem;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            width: 100%;
-            cursor: pointer;
-            background: white;
-        }
-
-        .programs-grid {
+        /* Grilles */
+        .programs-grid, .fullbody-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: clamp(0.8rem, 2vw, 1.5rem);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
         }
 
-        .program-card {
+        .program-card, .fullbody-card {
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
+        .program-card:hover, .fullbody-card:hover { transform: translateY(-5px); }
 
         .program-img {
-            height: 180px;
+            height: 160px;
             background-size: cover;
             background-position: center;
         }
 
-        .program-content {
-            padding: clamp(0.8rem, 2vw, 1.2rem);
+        .program-content, .fullbody-content {
+            padding: 1rem;
         }
 
-        .program-content h3 {
+        .program-content h3, .fullbody-content h3 {
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
 
-        .program-content p {
+        .program-content p, .fullbody-desc {
+            font-size: 0.8rem;
             color: #666;
-            margin-bottom: 1rem;
-            font-size: clamp(0.8rem, 2vw, 0.85rem);
+            margin-bottom: 0.8rem;
         }
 
-        .program-content ul {
+        .program-content ul, .exercise-list {
             list-style: none;
             padding-left: 0;
         }
 
-        .program-content ul li {
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.8rem, 2vw, 0.85rem);
+        .program-content ul li, .exercise-list li {
+            font-size: 0.75rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .program-image-container {
-            position: relative;
-            margin: 1rem 0;
+            margin-top: 0.8rem;
         }
 
         .program-image {
             width: 100%;
             height: auto;
-            display: block;
-            cursor: pointer;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
-        .program-image-container::after {
-            content: 'Francis Courbron';
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            color: white;
-            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-            opacity: 0.5;
-            text-shadow: 1px 1px 2px black;
+        .fullbody-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
         }
 
-        .weekly-plan {
-            background: white;
-            color: #333;
-            padding: clamp(0.8rem, 2vw, 1.2rem);
-            border-radius: 12px;
-            max-width: 600px;
-            margin: clamp(0.8rem, 2vw, 1.5rem) auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .weekly-plan h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-        }
-
-        .tips-section {
-            background-color: var(--light);
-            padding: clamp(1.5rem, 4vw, 2rem) 0;
-        }
-
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: clamp(0.8rem, 2vw, 1.5rem);
-        }
-
-        .tip-card {
-            background: white;
-            padding: clamp(0.8rem, 2vw, 1.2rem);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .tip-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .tip-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-        }
-
-        .tip-card p {
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: clamp(1.5rem, 4vw, 2rem) 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: clamp(0.8rem, 2vw, 1.5rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 1rem;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.6rem;
-        }
-
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-            transform: translateX(4px);
-        }
-
-        .social-links a {
-            margin-right: 0.8rem;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #bbb;
-            transition: transform 0.3s, color 0.3s;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-            color: var(--accent);
-        }
-
-        .back-to-top {
+        /* Image en bas du défi complet */
+        .defi-bottom-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            cursor: pointer;
             display: block;
-            margin: 1rem auto 0;
+            border: 2px solid var(--light);
+        }
+
+        .fullbody-level {
+            display: inline-block;
             background: var(--accent);
             color: white;
-            padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2vw, 1.2rem);
-            border-radius: 50px;
-            text-align: center;
-            text-decoration: none;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            transition: all 0.3s ease;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
         }
 
-        .back-to-top:hover {
-            background: #dc2626;
-            transform: scale(1.05);
+        .intensity-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            align-items: center;
+        /* Filtres */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             justify-content: center;
+            margin: 1rem 0;
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 70vh;
-            border-radius: 8px;
-            object-fit: contain;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            font-weight: bold;
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s;
+            font-size: 0.8rem;
+            transition: all 0.3s;
         }
 
-        .close:hover {
-            transform: scale(1.2);
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
         }
 
-        /* Styles pour le système de connexion */
+        /* Sections connecté/non connecté */
+        .user-specific-content { display: none; }
+        .logged-in .user-specific-content { display: block; }
+        .logged-in .guest-content { display: none; }
+
+        /* Tableaux et suivi */
+        .tracking-section, .weight-section, .notepad-section {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tracking-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .tracking-table th, .tracking-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .tracking-table th { background: var(--light); }
+
+        .tracking-table textarea {
+            width: 100%;
+            padding: 0.3rem;
+            font-size: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .tracking-cards {
+            display: none;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .tracking-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.8rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 { font-size: 1.3rem; color: var(--primary); }
+
         .login-btn {
             background: var(--accent);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 50px;
             cursor: pointer;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            transition: all 0.3s ease;
         }
 
-        .login-btn:hover {
-            background: #dc2626;
-            transform: scale(1.05);
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            cursor: pointer;
         }
 
-        .login-modal, .logout-modal {
+        .modal {
             display: none;
             position: fixed;
             z-index: 1002;
@@ -483,247 +360,29 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.7);
             align-items: center;
             justify-content: center;
         }
 
-        .login-form, .logout-form {
+        .modal-content {
             background: white;
-            padding: clamp(1.5rem, 4vw, 2rem);
+            padding: 1.5rem;
             border-radius: 12px;
             width: 90%;
-            max-width: 400px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            max-width: 350px;
         }
 
-        .login-form h3, .logout-form h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
+        .form-group { margin-bottom: 1rem; }
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.6rem;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-size: 1rem;
         }
 
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
+        .form-actions { display: flex; gap: 0.8rem; margin-top: 1rem; }
 
-        .form-actions button {
-            flex: 1;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .form-actions .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .form-actions .btn-primary:hover {
-            background: #dc2626;
-        }
-
-        .form-actions .btn-secondary {
-            background: #ddd;
-            color: #333;
-        }
-
-        .form-actions .btn-secondary:hover {
-            background: #ccc;
-        }
-
-        .user-info {
-            display: none;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .user-info i {
-            font-size: 1.2rem;
-        }
-
-        /* Styles pour le tableau de suivi - Version Desktop */
-        .tracking-section {
-            background: white;
-            padding: clamp(1.5rem, 4vw, 2rem);
-            border-radius: 12px;
-            margin: clamp(1rem, 3vw, 1.5rem) 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .tracking-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .tracking-table th, .tracking-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .tracking-table th {
-            background-color: var(--light);
-            font-weight: 600;
-        }
-
-        .tracking-table input[type="checkbox"] {
-            transform: scale(1.2);
-        }
-
-        .tracking-table textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        .tracking-table button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .tracking-table button:hover {
-            background: #2563eb;
-        }
-
-        /* Styles pour le tableau de suivi - Version Mobile */
-        .tracking-cards {
-            display: none;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .tracking-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .tracking-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .tracking-card-title {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .tracking-card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .tracking-card-field {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .tracking-card-field label {
-            font-weight: 500;
-            color: #555;
-            font-size: 0.85rem;
-        }
-
-        .tracking-card-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tracking-card-checkbox input {
-            transform: scale(1.2);
-        }
-
-        .tracking-card textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-            min-height: 60px;
-            font-family: inherit;
-        }
-
-        .tracking-card button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 0.5rem;
-        }
-
-        .tracking-card button:hover {
-            background: #2563eb;
-        }
-
-        /* Styles pour les images différentes après connexion */
-        .user-specific-content {
-            display: none;
-        }
-
-        .logged-in .user-specific-content {
-            display: block;
-        }
-
-        .logged-in .guest-content {
-            display: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Mobile Menu Backdrop */
         .menu-backdrop {
             display: none;
             position: fixed;
@@ -731,345 +390,173 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
         }
 
-        .menu-backdrop.active {
-            display: block;
-        }
-
-        /* Filtres améliorés */
-        .filters-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .filter-btn {
+        /* Bloc accès restreint */
+        .locked-section {
             background: white;
-            border: 1px solid #ddd;
-            padding: 0.5rem 1rem;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        .locked-section .lock-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .locked-section h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .locked-section p {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Tab navigation pour les sections principales */
+        .main-tabs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .main-tab-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.6rem 1.5rem;
             border-radius: 50px;
             cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.3s;
         }
-
-        .filter-btn.active {
-            background: var(--secondary);
+        .main-tab-btn.active, .main-tab-btn:hover {
+            background: var(--primary);
             color: white;
-            border-color: var(--secondary);
         }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
 
-        .filter-btn:hover {
-            background: var(--light);
-        }
-
-        /* Statistiques */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .stat-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Section commentaires */
-        .comments-section {
-            background: white;
-            padding: clamp(1.5rem, 4vw, 2rem);
-            border-radius: 12px;
-            margin: clamp(1rem, 3vw, 1.5rem) 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .comments-list {
-            margin-bottom: 2rem;
-        }
-
-        .comment {
-            background: var(--light);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .comment-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .comment-date {
-            color: #666;
-            font-size: 0.8rem;
-        }
-
-        .comment-text {
-            color: #333;
-        }
-
-        .add-comment-form {
-            margin-top: 1.5rem;
-        }
-
-        .add-comment-form h4 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* Message d'accès limité */
-        .access-limited {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin: 2rem auto;
-            max-width: 600px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .access-limited h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .access-limited p {
-            margin-bottom: 1.5rem;
-            color: #666;
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                position: relative;
-            }
-
-            .hamburger {
-                display: block;
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
+            .hamburger { display: block; }
             nav {
                 display: none;
                 position: fixed;
                 top: 0;
                 right: 0;
-                width: 75%;
-                max-width: 250px;
+                width: 70%;
+                max-width: 240px;
                 height: 100%;
                 background: var(--primary);
                 padding: 4rem 1rem 1rem;
-                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in-out;
                 z-index: 1001;
             }
-
-            nav.active {
-                display: block;
-                transform: translateX(0);
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1.2rem;
-            }
-
-            nav ul li a {
-                font-size: clamp(1rem, 3vw, 1.1rem);
-                padding: 0.8rem 1rem;
-                display: block;
-            }
-
-            .menu-backdrop.active {
-                display: block;
-            }
-
-            .hero {
-                min-height: 40vh;
-            }
-
-            .hero h1 {
-                font-size: clamp(1.6rem, 4.5vw, 2rem);
-            }
-
-            .hero p {
-                font-size: clamp(0.75rem, 2vw, 0.85rem);
-            }
-
-            .section {
-                padding: clamp(1rem, 3vw, 1.5rem) 0;
-            }
-
-            .programs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tips-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .weekly-plan {
-                padding: clamp(0.6rem, 2vw, 1rem);
-            }
-
-            .program-img {
-                height: 140px;
-            }
-
-            .program-content {
-                padding: clamp(0.6rem, 1.5vw, 0.8rem);
-            }
-
-            .program-content h3 {
-                font-size: clamp(0.9rem, 2vw, 1rem);
-            }
-
-            .program-content p, .program-content ul li {
-                font-size: clamp(0.7rem, 1.8vw, 0.75rem);
-            }
-
-            .week-selector select {
-                font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-            }
-
-            .modal-content {
-                max-height: 65vh;
-            }
-
-            /* Tableau de suivi responsive */
-            .tracking-table {
-                display: none;
-            }
-
-            .tracking-cards {
-                display: flex;
-            }
-
-            .filters-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            nav.active { display: block; }
+            nav ul { flex-direction: column; gap: 0.8rem; }
+            nav ul li a { display: block; padding: 0.6rem; }
+            .menu-backdrop.active { display: block; }
+            .tracking-table { display: none; }
+            .tracking-cards { display: flex; }
+            .programs-grid, .fullbody-grid { grid-template-columns: 1fr; }
+            .main-tabs { flex-direction: column; align-items: center; }
         }
 
         @media (min-width: 769px) {
-            .tracking-table {
-                display: table;
-            }
-            
-            .tracking-cards {
-                display: none;
-            }
+            .tracking-table { display: table; }
+            .tracking-cards { display: none; }
         }
 
-        @media (max-width: 480px) {
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .tracking-card {
-                padding: 0.8rem;
-            }
-            
-            .tracking-card-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
+        .weight-history {
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .notepad-content {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.8rem;
+        }
+
+        .weekly-plan {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem auto;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="menu-backdrop"></div>
-    
-    <!-- Modal de connexion -->
-    <div id="loginModal" class="login-modal">
-        <div class="login-form">
-            <h3>Connexion</h3>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:var(--primary)">Connexion</h3>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Nom d'utilisateur</label>
+                    <label>Nom d'utilisateur</label>
                     <input type="text" id="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe</label>
+                    <label>Mot de passe</label>
                     <input type="password" id="password" required>
                 </div>
                 <div class="form-actions">
-                    <button type="button" class="btn-secondary" id="cancelLogin">Annuler</button>
-                    <button type="submit" class="btn-primary">Se connecter</button>
+                    <button type="button" class="btn" id="cancelLogin" style="background:#ccc;color:#333">Annuler</button>
+                    <button type="submit" class="btn">Se connecter</button>
                 </div>
             </form>
         </div>
     </div>
-    
-    <!-- Modal de déconnexion -->
-    <div id="logoutModal" class="logout-modal">
-        <div class="logout-form">
+
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
             <h3>Déconnexion</h3>
-            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <p>Voulez-vous vous déconnecter ?</p>
             <div class="form-actions">
-                <button type="button" class="btn-secondary" id="cancelLogout">Annuler</button>
-                <button type="button" class="btn-primary" id="confirmLogout">Se déconnecter</button>
+                <button id="cancelLogout" class="btn" style="background:#ccc">Annuler</button>
+                <button id="confirmLogout" class="btn">Déconnecter</button>
             </div>
         </div>
     </div>
-    
-    <!-- Modal pour images -->
+
     <div id="imageModal" class="modal">
-        <span class="close" aria-label="Fermer">&times;</span>
-        <img class="modal-content" id="modalImage">
+        <span style="position:absolute;top:20px;right:30px;color:white;font-size:30px;cursor:pointer" class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" style="max-width:90%;max-height:80%;object-fit:contain;background:transparent">
     </div>
 
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">Francis <span>Courbron</span></div>
-                <button class="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <button class="hamburger"><i class="fas fa-bars"></i></button>
                 <nav>
                     <ul>
                         <li><a href="#accueil">Accueil</a></li>
                         <li><a href="#programmes">Programmes</a></li>
+                        <!-- Lien Défi Complet uniquement visible si connecté -->
+                        <li class="nav-defi-complet"><a href="#fullbody">Défi Complet</a></li>
                         <li><a href="#conseils">Conseils</a></li>
                         <li><a href="#suivi">Suivi</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li id="loginNavItem">
                             <button class="login-btn" id="loginBtn">Se connecter</button>
                             <div class="user-info" id="userInfo">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user-circle"></i>
                                 <span id="userName"></span>
                             </div>
                         </li>
@@ -1079,972 +566,520 @@
         </div>
     </header>
 
-    <section class="hero" id="accueil" data-aos="fade-up">
+    <!-- HERO -->
+    <section class="hero" id="accueil" style="background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200');background-size:cover;background-position:center;padding:3rem 0;text-align:center;color:white">
         <div class="container">
-            <div class="hero-content">
-                <h1>Transformez Votre Corps avec Francis Courbron</h1>
-                <p>Bonjour, je suis Francis Courbron, coach sportif certifié spécialisé en perte de poids et bien-être. Découvrez mes programmes personnalisés et mes conseils pour une vie plus saine.</p>
-                <div>
-                    <a href="#programmes" class="btn">Voir les Programmes</a>
-                    <a href="#conseils" class="btn btn-outline">Conseils Gratuits</a>
-                </div>
-            </div>
+            <h1 style="font-size:clamp(1.5rem,5vw,2.2rem)">Transformez Votre Corps avec Francis Courbron</h1>
+            <p style="margin:1rem auto;max-width:500px">Coach sportif certifié spécialisé en perte de poids et bien-être.</p>
+            <a href="#programmes" class="btn">Programmes Hebdomadaires</a>
+            <!-- Bouton Défi Complet uniquement visible si connecté -->
+            <span id="heroDefiBtn" style="display:none">
+                <a href="#fullbody" class="btn" style="background:transparent;border:2px solid white;margin-left:0.5rem">Défi Corps Complet</a>
+            </span>
         </div>
     </section>
 
-    <section class="section" id="programmes" data-aos="fade-up">
+    <!-- =====================================================
+         SECTION PRINCIPALE : ONGLETS HEBDOMADAIRE / DÉFI
+         ===================================================== -->
+    <section class="section" id="programmes">
         <div class="container">
             <div class="section-title">
-                <h2>Programmes d'Entraînement</h2>
-                <p>12 jours d'entraînement répartis sur 4 semaines, avec un jour facultatif chaque semaine pour une progression optimale.</p>
+                <h2>Mes Programmes</h2>
+                <p>Entraînements hebdomadaires et défis intensifs</p>
             </div>
-            
-            <div class="week-selector">
-                <select id="week-select">
-                    <option value="1">Semaine 1 (Jours 1-3)</option>
-                    <option value="2">Semaine 2 (Jours 4-6)</option>
-                    <option value="3">Semaine 3 (Jours 7-9)</option>
-                    <option value="4">Semaine 4 (Jours 10-12)</option>
-                </select>
+
+            <!-- Onglets de navigation -->
+            <div class="main-tabs">
+                <button class="main-tab-btn active" id="tabHebdo" onclick="switchTab('hebdo')">
+                    <i class="fas fa-calendar-week"></i> Entraînements Hebdomadaires
+                </button>
+                <!-- Onglet Défi : visible uniquement si connecté -->
+                <button class="main-tab-btn" id="tabDefi" onclick="switchTab('defi')" style="display:none">
+                    <i class="fas fa-fire"></i> Défi Corps Complet
+                </button>
             </div>
-            
-            <div class="filters-container">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="strength">Force</button>
-                <button class="filter-btn" data-filter="cardio">Cardio</button>
-                <button class="filter-btn" data-filter="flexibility">Flexibilité</button>
-            </div>
-            
-            <div class="guest-content">
-                <button id="randomize-btn" class="btn" style="display: block; margin: 1.5rem auto;">Générer Programme Aléatoire</button>
-            </div>
-            
-            <!-- Contenu pour utilisateurs non connectés (semaine 1 uniquement) -->
-            <div class="guest-content" id="guest-programs">
-                <div class="programs-grid" id="programs-grid">
-                    <!-- Contenu généré dynamiquement -->
+
+            <!-- ===== PANNEAU HEBDOMADAIRE ===== -->
+            <div class="tab-panel active" id="panelHebdo">
+                <div class="section-title">
+                    <h2>Programmes Hebdomadaires</h2>
+                    <p>12 jours sur 4 semaines</p>
+                </div>
+
+                <!-- Sélecteur semaine : semaines 2-4 uniquement pour connectés -->
+                <div class="week-selector" style="text-align:center;margin-bottom:1rem">
+                    <select id="week-select">
+                        <option value="1">Semaine 1 (J1-3)</option>
+                        <!-- Options semaines 2-4 générées par JS uniquement si connecté -->
+                    </select>
+                </div>
+
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="strength">Force</button>
+                    <button class="filter-btn" data-filter="cardio">Cardio</button>
+                    <button class="filter-btn" data-filter="flexibility">Flexibilité</button>
+                </div>
+
+                <!-- Grille programmes hebdomadaires -->
+                <div class="programs-grid" id="programs-grid"></div>
+
+                <!-- Message accès limité semaines 2-4 pour non connectés -->
+                <div id="locked-weeks" style="display:none">
+                    <div class="locked-section">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <h3>Semaines 2, 3 et 4 verrouillées</h3>
+                        <p>Connectez-vous pour accéder à l'intégralité du programme sur 4 semaines.</p>
+                        <button class="btn" onclick="document.getElementById('loginModal').style.display='flex'">
+                            <i class="fas fa-sign-in-alt"></i> Se connecter
+                        </button>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Contenu pour utilisateurs connectés (toutes les semaines) -->
-            <div class="user-specific-content" id="user-programs">
-                <div class="programs-grid" id="user-programs-grid">
-                    <!-- Contenu généré dynamiquement -->
+
+            <!-- ===== PANNEAU DÉFI COMPLET (connectés uniquement) ===== -->
+            <div class="tab-panel" id="panelDefi">
+
+                <!-- Affiché si connecté -->
+                <div class="user-specific-content" id="defiConnectedContent">
+                    <div class="section-title">
+                        <h2><i class="fas fa-fire"></i> Défi Intensif 3 Jours</h2>
+                        <p>Programme complet sur 3 jours avec suivi personnalisé</p>
+                    </div>
+                    <div class="fullbody-grid" id="fullbodyGrid">
+
+                        <!-- JOUR 1 -->
+                        <div class="fullbody-card">
+                            <img src="body1.jpg" alt="Jour 1" class="fullbody-img" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400'">
+                            <div class="fullbody-content">
+                                <span class="fullbody-level">🔥 JOUR 1 - FONDATIONS</span>
+                                <h3>Full Body Intensive #1</h3>
+                                <p class="fullbody-desc">Séance complète pour activer tout le corps</p>
+                                <ul class="exercise-list">
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Squat, Développé couché, Rowing barre : 3x10</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Curl biceps, Extensions triceps : 3x10</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Soulevé de terre, Fentes, Tirage vertical : 3x10</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Gainage, Crunchs : 3x10</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Variante machines guidées : 3x10</li>
+                                </ul>
+                                <span class="intensity-badge">Repos 1'30 entre séries</span>
+                                <!-- Image du dossier en bas -->
+                                <img src="defi2.jpeg" alt="Défi Jour 1" class="defi-bottom-image" data-fullsrc="defi2.jpeg" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+
+                        <!-- JOUR 2 -->
+                        <div class="fullbody-card">
+                            <img src="body2.jpg" alt="Jour 2" class="fullbody-img" onerror="this.src='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400'">
+                            <div class="fullbody-content">
+                                <span class="fullbody-level">⚡ JOUR 2 - PERFORMANCE</span>
+                                <h3>Full Body Intensive #2</h3>
+                                <p class="fullbody-desc">Ciblage musculaire et endurance</p>
+                                <ul class="exercise-list">
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Presse à cuisses (Quadriceps) : 3x12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Tirage vertical (Dos) : 3x12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Développé assis (Pectoraux) : 3x12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Leg curl (Ischio) : 3x12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Écarté machine (Pectoraux/Épaules) : 3x12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Gainage planche (Abdos) : 3x45 sec</li>
+                                </ul>
+                                <span class="intensity-badge">Repos 1'30 entre séries</span>
+                                <!-- Image du dossier en bas -->
+                                <img src="defi3.jpeg" alt="Défi Jour 2" class="defi-bottom-image" data-fullsrc="defi3.jpeg" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+
+                        <!-- JOUR 3 -->
+                        <div class="fullbody-card">
+                            <img src="body3.jpg" alt="Jour 3" class="fullbody-img" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400'">
+                            <div class="fullbody-content">
+                                <span class="fullbody-level">💪 JOUR 3 - ELITE</span>
+                                <h3>Full Body Intensive #3</h3>
+                                <p class="fullbody-desc">Séance avancée pour résultats maximaux</p>
+                                <ul class="exercise-list">
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Développé couché : 4x8-12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Tractions poulie haute : 4x8-20</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Squat : 4x8-12</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Glute Ham Raise : 3x12-20</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Développé militaire : 3x8-15</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Oiseaux haltères : 3x12-30</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Curl barre : 3x8-15</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Barre au front : 3x10-20</li>
+                                    <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Crunch Abmat : 4x20-50</li>
+                                </ul>
+                                <span class="intensity-badge">Intensité maximale</span>
+                                <!-- Image du dossier en bas -->
+                                <img src="defi1.jpeg" alt="Défi Jour 3" class="defi-bottom-image" data-fullsrc="defi1.jpeg" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+
+                    </div><!-- /fullbodyGrid -->
                 </div>
-            </div>
-            
-            <!-- Message d'accès limité pour les semaines 2-4 pour utilisateurs non connectés -->
-            <div class="guest-content" id="limited-access" style="display: none;">
-                <div class="access-limited">
-                    <h3>Accès limité aux semaines 2, 3 et 4</h3>
-                    <p>Connectez-vous pour accéder à tous les programmes d'entraînement des semaines 2, 3 et 4, ainsi qu'au tableau de suivi personnalisé.</p>
-                    <button class="btn" id="loginAccessBtn">Se connecter pour accéder</button>
+
+                <!-- Affiché si NON connecté (mais ne devrait pas être accessible via onglet) -->
+                <div class="guest-content">
+                    <div class="locked-section">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <h3>Défi Corps Complet — Accès restreint</h3>
+                        <p>Le programme de Défi Intensif 3 Jours est réservé aux membres connectés. Connectez-vous pour débloquer l'accès complet.</p>
+                        <button class="btn" onclick="document.getElementById('loginModal').style.display='flex'">
+                            <i class="fas fa-sign-in-alt"></i> Se connecter
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            </div><!-- /panelDefi -->
+
+        </div><!-- /container -->
     </section>
 
+    <!-- ANCRE DÉFI pour les liens nav -->
+    <div id="fullbody"></div>
+
+    <!-- SUIVI POIDS ET NOTES PERSO -->
     <section class="section" id="suivi">
         <div class="container">
-            <div class="section-title">
-                <h2>Tableau de Suivi</h2>
-                <p>Marquez votre progression et notez vos entraînements pour suivre votre évolution.</p>
-            </div>
-            
+            <div class="section-title"><h2>Suivi Personnalisé</h2><p>Votre progression, votre poids, vos notes</p></div>
             <div class="user-specific-content">
                 <div class="stats-container">
-                    <div class="stat-card">
-                        <h3 id="completedWorkouts">0</h3>
-                        <p>Séances terminées</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="completionRate">0%</h3>
-                        <p>Taux de complétion</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="currentStreak">0</h3>
-                        <p>Jours consécutifs</p>
-                    </div>
+                    <div class="stat-card"><h3 id="completedWorkouts">0</h3><p>Séances faites</p></div>
+                    <div class="stat-card"><h3 id="completionRate">0%</h3><p>Progression</p></div>
+                    <div class="stat-card"><h3 id="currentStreak">0</h3><p>Jours consécutifs</p></div>
                 </div>
-                
-                <div class="tracking-section">
-                    <h3>Suivi de la semaine <span id="currentWeekDisplay">1</span></h3>
-                    
-                    <!-- Version Desktop (tableau) -->
-                    <table class="tracking-table">
-                        <thead>
-                            <tr>
-                                <th>Jour</th>
-                                <th>Exercice</th>
-                                <th>Réalisé</th>
-                                <th>Notes</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="trackingTableBody">
-                            <!-- Contenu généré dynamiquement -->
-                        </tbody>
-                    </table>
-                    
-                    <!-- Version Mobile (cartes) -->
-                    <div class="tracking-cards" id="trackingCards">
-                        <!-- Contenu généré dynamiquement -->
-                    </div>
+                <div class="tracking-section"><h3>Suivi Hebdomadaire — Semaine <span id="currentWeekDisplay">1</span></h3>
+                    <table class="tracking-table"><thead><tr><th>Jour</th><th>Exercice</th><th>Fait</th><th>Notes</th><th>Action</th></tr></thead><tbody id="trackingTableBody"></tbody></table>
+                    <div class="tracking-cards" id="trackingCards"></div>
+                </div>
+                <div class="tracking-section"><h3>Suivi Défi Complet</h3>
+                    <div id="challengeTracking"></div>
+                    <button id="saveChallengeBtn" class="btn" style="margin-top:0.5rem">Enregistrer progression défi</button>
+                </div>
+                <div class="weight-section"><h3>Suivi du poids</h3>
+                    <input type="number" id="weightInput" step="0.1" placeholder="Poids (kg)" style="padding:0.5rem;width:100px">
+                    <button id="saveWeightBtn" class="btn">Ajouter</button>
+                    <div id="weightHistory" class="weight-history"></div>
+                </div>
+                <div class="notepad-section"><h3>Bloc-notes personnel</h3>
+                    <textarea id="personalNotes" class="notepad-content" placeholder="Mes notes personnelles, objectifs, ressentis..."></textarea>
+                    <button id="saveNotesBtn" class="btn" style="margin-top:0.5rem">Enregistrer notes</button>
                 </div>
             </div>
-            
             <div class="guest-content">
-                <div class="weekly-plan">
-                    <h3>Connectez-vous pour accéder au tableau de suivi</h3>
-                    <p>Le tableau de suivi vous permet de marquer vos entraînements réalisés et de prendre des notes sur votre progression.</p>
-                    <button class="btn" id="loginPromptBtn">Se connecter</button>
+                <div class="locked-section">
+                    <div class="lock-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Connectez-vous pour accéder au suivi complet</h3>
+                    <p>Historique de poids, progression, notes personnelles — tout est sauvegardé pour vous.</p>
+                    <button class="btn" onclick="document.getElementById('loginModal').style.display='flex'">
+                        <i class="fas fa-sign-in-alt"></i> Se connecter
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="tips-section" id="conseils" data-aos="fade-up">
-        <div class="container">
-            <div class="section-title">
-                <h2>Conseils d'Entraînement & Nutrition</h2>
-                <p>Recommandations professionnelles pour maximiser vos résultats et rester en bonne santé.</p>
-            </div>
-            
-            <div class="tips-grid">
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-running"></i> Échauffement</h3>
-                    <p>Commencez par 5-10 min sur tapis roulant (max 10 km/h) pour préparer le corps.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-people-arrows"></i> Étirements</h3>
-                    <p>Terminez par des étirements légers (20-30s par muscle) pour la récupération.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-tint"></i> Hydratation</h3>
-                    <p>Buvez 2-3L d'eau/jour. Si transpiration intense, ajoutez électrolytes.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-lungs"></i> Respiration</h3>
-                    <p>Expirez à l'effort, inspirez au retour pour meilleure performance.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-user-check"></i> Posture</h3>
-                    <p>Dos droit, épaules basses. Filmez-vous pour corriger les erreurs.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-bed"></i> Récupération</h3>
-                    <p>Arrêtez si douleur aiguë. Dormez 7-8h/nuit pour progresser.</p>
-                </div>
-                
-                <div class="tip-card" data-aos="zoom-in">
-                    <h3><i class="fas fa-apple-alt"></i> Nutrition</h3>
-                    <p>Repas équilibrés : protéines (poulet, œufs), veggies, évitez sucres. Déficit calorique pour perte de poids.</p>
-                </div>
+    <section class="tips-section" id="conseils" style="background:var(--light);padding:2rem 0">
+        <div class="container"><div class="section-title"><h2>Conseils</h2></div>
+            <div class="tips-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+                <div class="tip-card" style="background:white;padding:1rem;border-radius:12px"><h3><i class="fas fa-running"></i> Échauffement</h3><p>5-10 min avant chaque séance</p></div>
+                <div class="tip-card" style="background:white;padding:1rem;border-radius:12px"><h3><i class="fas fa-tint"></i> Hydratation</h3><p>2-3L d'eau par jour</p></div>
+                <div class="tip-card" style="background:white;padding:1rem;border-radius:12px"><h3><i class="fas fa-bed"></i> Récupération</h3><p>7-8h de sommeil</p></div>
+                <div class="tip-card" style="background:white;padding:1rem;border-radius:12px"><h3><i class="fas fa-apple-alt"></i> Nutrition</h3><p>Repas équilibrés, protéines</p></div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="commentaires">
+    <footer id="contact" style="background:var(--dark);color:white;padding:2rem 0">
         <div class="container">
-            <div class="section-title">
-                <h2>Espace Commentaires</h2>
-                <p>Partagez vos expériences et posez vos questions.</p>
+            <div class="footer-content" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem">
+                <div><h3>Francis Courbron</h3><p>Coach sportif</p></div>
+                <div><h3>Contact</h3><p>franciscourbron02@gmail.com</p></div>
             </div>
-            
-            <div class="comments-section">
-                <div class="comments-list" id="commentsList">
-                    <!-- Commentaires fictifs pour les non-connectés -->
-                    <div class="guest-content">
-                        <div class="comment">
-                            <div class="comment-header">
-                                <span class="comment-author">Marie D.</span>
-                                <span class="comment-date">25/10/2025</span>
-                            </div>
-                            <p class="comment-text">Super programme ! J'ai perdu 5 kg en un mois grâce à ces exercices. Francis est un excellent coach !</p>
-                        </div>
-                        <div class="comment">
-                            <div class="comment-header">
-                                <span class="comment-author">Thomas L.</span>
-                                <span class="comment-date">22/10/2025</span>
-                            </div>
-                            <p class="comment-text">Les conseils nutritionnels m'ont beaucoup aidé. Je me sens plus énergique et en meilleure forme.</p>
-                        </div>
-                        <div class="comment">
-                            <div class="comment-header">
-                                <span class="comment-author">Sophie M.</span>
-                                <span class="comment-date">18/10/2025</span>
-                            </div>
-                            <p class="comment-text">J'adore la variété des exercices. Chaque semaine apporte de nouveaux défis. Merci Francis !</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Commentaires réels pour les utilisateurs connectés -->
-                    <div class="user-specific-content" id="userComments">
-                        <!-- Les commentaires réels seront ajoutés ici dynamiquement -->
-                    </div>
-                </div>
-                
-                <!-- Formulaire d'ajout de commentaire (visible uniquement pour les utilisateurs connectés) -->
-                <div class="user-specific-content">
-                    <div class="add-comment-form">
-                        <h4>Ajouter un commentaire</h4>
-                        <form id="addCommentForm">
-                            <div class="form-group">
-                                <textarea id="commentText" placeholder="Partagez votre expérience..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Publier le commentaire</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <!-- Invitation à se connecter pour commenter -->
-                <div class="guest-content">
-                    <div class="weekly-plan">
-                        <h3>Connectez-vous pour partager votre expérience</h3>
-                        <p>Rejoignez la communauté pour échanger avec d'autres membres et partager vos progrès.</p>
-                        <button class="btn" id="loginCommentBtn">Se connecter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" data-aos="fade-up">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Francis Courbron</h3>
-                    <p>Coach sportif certifié, spécialisé en perte de poids, tonification et santé globale.</p>
-                    <div class="social-links">
-                        <a href=" https://www.facebook.com/share/1FD9yscALk/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/franciscourbron1?igsh=MTAwOTdhaWZobm94dA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Programmes</h3>
-                    <ul>
-                        <li><a href="#programmes">Semaine 1 : Jours 1-3</a></li>
-                        <li><a href="#programmes">Semaine 2 : Jours 4-6</a></li>
-                        <li><a href="#programmes">Semaine 3 : Jours 7-9</a></li>
-                        <li><a href="#programmes">Semaine 4 : Jours 10-12</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Conseils</h3>
-                    <ul>
-                        <li><a href="#conseils">Échauffement & Étirements</a></li>
-                        <li><a href="#conseils">Hydratation & Nutrition</a></li>
-                        <li><a href="#conseils">Posture & Respiration</a></li>
-                        <li><a href="#conseils">Récupération</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:franciscourbron02@gmail.com">franciscourbron02@gmail.com</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <a href="#accueil" class="back-to-top">Retour en Haut</a>
-            <div class="copyright">
-                <p>&copy; 2025 Francis Courbron - Tous droits réservés</p>
-            </div>
+            <div class="copyright" style="text-align:center;margin-top:1rem">&copy; 2025 Francis Courbron</div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialisation AOS
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true });
 
-        // Menu hamburger
+        // ── MENU MOBILE ──────────────────────────────────────────
         const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const backdrop = document.querySelector('.menu-backdrop');
-
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            backdrop.classList.toggle('active');
+        const navMenu = document.querySelector('nav');
+        const backdropMenu = document.querySelector('.menu-backdrop');
+        hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); backdropMenu.classList.toggle('active'); });
+        backdropMenu.addEventListener('click', () => { navMenu.classList.remove('active'); backdropMenu.classList.remove('active'); });
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => { navMenu.classList.remove('active'); backdropMenu.classList.remove('active'); });
         });
 
-        backdrop.addEventListener('click', () => {
-            nav.classList.remove('active');
-            backdrop.classList.remove('active');
-        });
-
-        // Navigation fluide
-        document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 60,
-                    behavior: 'smooth'
-                });
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    backdrop.classList.remove('active');
-                }
-            });
-        });
-
-        // Données des programmes pour 12 jours avec images en ligne
+        // ── DONNÉES PROGRAMMES ───────────────────────────────────
         const dayData = {
-            '1': {
-                title: 'Dos & Biceps',
-                icon: 'fa-dumbbell',
-                description: 'Séance axée sur le développement du dos et des biceps. Hydratez-vous bien et arrêtez si douleur aiguë.',
-                exercises: ['Tractions : 3 séries de 10', 'Rowing barre : 3 séries de 12', 'Curl biceps : 3 séries de 15'],
-                image: 'jour1.jpeg',
-                background: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'strength'
-            },
-            '2': {
-                title: 'Pectoraux & Triceps',
-                icon: 'fa-weight-hanging',
-                description: 'Séance intensive pour la poitrine et les triceps. Concentrez-vous sur la posture et les repas équilibrés post-séance.',
-                exercises: ['Développé couché : 3 séries de 10', 'Dips : 3 séries de 12', 'Extensions triceps : 3 séries de 15'],
-                image: 'jour2.jpeg',
-                background: 'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'strength'
-            },
-            '3': {
-                title: 'Corps Complet',
-                icon: 'fa-running',
-                description: 'Séance globale pour tout le corps. Idéal pour la forme générale et la santé.',
-                exercises: ['Squats : 3 séries de 12', 'Pompes : 3 séries de 15', 'Planche : 3x30s'],
-                image: 'jour3.jpg',
-                background: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'strength'
-            },
-            '4': {
-                title: 'Cardio Intensif',
-                icon: 'fa-heartbeat',
-                description: 'Séance cardiovasculaire pour améliorer l\'endurance et brûler des calories.',
-                exercises: ['Course à pied : 20 min', 'Corde à sauter : 3 séries de 2 min', 'Burpees : 3 séries de 10'],
-                image: 'jour4.jpeg',
-                background: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'cardio'
-            },
-            '5': {
-                title: 'Épaules & Abdominaux',
-                icon: 'fa-dumbbell',
-                description: 'Séance pour développer les épaules et renforcer la sangle abdominale.',
-                exercises: ['Développé militaire : 3 séries de 10', 'Élévations latérales : 3 séries de 12', 'Crunch : 3 séries de 20'],
-                image: 'jour5.jpeg',
-                background: 'https://i.ytimg.com/vi/eBLj0RWKrbg/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWShRMA8=&rs=AOn4CLA6qvm3-PH3wigXtdIAVbHzwG57eQ',
-                category: 'strength'
-            },
-            '6': {
-                title: 'Jambes & Fessiers',
-                icon: 'fa-running',
-                description: 'Séance intensive pour le bas du corps. Pensez à bien vous étirer après.',
-                exercises: ['Squats : 4 séries de 10', 'Fentes : 3 séries de 12', 'Soulevé de terre : 3 séries de 10'],
-                image: 'jour6.jpeg',
-                background: ' https://tse1.mm.bing.net/th/id/OIP.hp-H-rQ-JbCjQGFW1_lh1wHaE8?pid=ImgDet&w=474&h=316&rs=1&o=7&rm=3',
-                category: 'strength'
-            },
-            '7': {
-                title: 'HIIT Cardio',
-                icon: 'fa-bolt',
-                description: 'Entraînement par intervalles à haute intensité pour maximiser la combustion des graisses.',
-                exercises: ['Sprints : 8x30s', 'Mountain climbers : 3 séries de 20', 'Sauts écart : 3 séries de 15'],
-                image: 'jour7.jpeg',
-                background: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'cardio'
-            },
-            '8': {
-                title: 'Haut du Corps',
-                icon: 'fa-dumbbell',
-                description: 'Séance complète pour le haut du corps. Travaillez tous les groupes musculaires.',
-                exercises: ['Développé couché : 3 séries de 10', 'Tirage vertical : 3 séries de 12', 'Élévations latérales : 3 séries de 15'],
-                image: 'jour8.jpeg',
-                background: 'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'strength'
-            },
-            '9': {
-                title: 'Yoga & Mobilité',
-                icon: 'fa-spa',
-                description: 'Séance de yoga pour améliorer la mobilité et la flexibilité. Idéal pour la récupération.',
-                exercises: ['Postures de yoga : 30 min', 'Étirements profonds : 15 min', 'Respiration contrôlée : 10 min'],
-                image: 'jour9.jpeg',
-                background: 'https://images.squarespace-cdn.com/content/v1/62635e9fbce1d12cfbbfe360/1659384251464-WWD0CVEQ54DA8WR123Q8/DSC06264.jpg?format=1000w',
-                category: 'flexibility'
-            },
-            '10': {
-                title: 'Full Body Strength',
-                icon: 'fa-dumbbell',
-                description: 'Séance de force complète pour tout le corps. Augmentez progressivement les charges.',
-                exercises: ['Squats : 4 séries de 8', 'Développé couché : 4 séries de 8', 'Soulevé de terre : 3 séries de 6'],
-                image: 'jour10.jpeg',
-                background: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'strength'
-            },
-            '11': {
-                title: 'Endurance Cardio',
-                icon: 'fa-road',
-                description: 'Séance d\'endurance cardiovasculaire pour améliorer votre condition physique générale.',
-                exercises: ['Course longue distance : 40 min', 'Vélo : 30 min', 'Natation : 20 min'],
-                image: 'jour11.jpeg',
-                background: 'https://www.clever-fit.com/app/uploads/2022/10/34_clever_fit_2022_09_Print_KS_07011-3.jpg',
-                category: 'cardio'
-            },
-            '12': {
-                title: 'Récupération Active',
-                icon: 'fa-wind',
-                description: 'Séance légère pour favoriser la récupération et prévenir les courbatures.',
-                exercises: ['Marche rapide : 30 min', 'Étirements dynamiques : 15 min', 'Foam rolling : 10 min'],
-                image: 'jour12.jpeg',
-                background: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'flexibility'
-            },
-            'facultatif': {
-                title: 'Facultatif',
-                icon: 'fa-plus-circle',
-                description: 'Séance optionnelle pour intensifier. Choisissez si vous vous sentez en forme.',
-                exercises: ['Cardio HIIT : 20 min', 'Abdos : 3 séries de 20', 'Exercices au choix : 15 min'],
-                image: 'jour extra.jpeg',
-                background: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80',
-                category: 'cardio'
-            }
+            '1':{title:'Dos & Biceps',icon:'fa-dumbbell',desc:'Développement dos et biceps',exo:['Tractions 3x10','Rowing 3x12','Curl 3x15'],img:'jour1.jpeg',bg:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400',cat:'strength'},
+            '2':{title:'Pectoraux & Triceps',icon:'fa-weight-hanging',desc:'Poitrine et triceps',exo:['DC 3x10','Dips 3x12','Extensions 3x15'],img:'jour2.jpeg',bg:'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=400',cat:'strength'},
+            '3':{title:'Corps Complet',icon:'fa-running',desc:'Global',exo:['Squats 3x12','Pompes 3x15','Planche 3x30s'],img:'jour3.jpg',bg:'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400',cat:'strength'},
+            '4':{title:'Cardio Intensif',icon:'fa-heartbeat',desc:'Endurance',exo:['Course 20min','Corde 3x2min','Burpees 3x10'],img:'jour4.jpeg',bg:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400',cat:'cardio'},
+            '5':{title:'Épaules & Abdos',icon:'fa-dumbbell',desc:'Ceinture abdominale',exo:['Militaire 3x10','Latérales 3x12','Crunch 3x20'],img:'jour5.jpeg',bg:'https://i.ytimg.com/vi/eBLj0RWKrbg/maxresdefault.jpg?w=400',cat:'strength'},
+            '6':{title:'Jambes',icon:'fa-running',desc:'Bas du corps',exo:['Squats 4x10','Fentes 3x12','SDT 3x10'],img:'jour6.jpeg',bg:'https://tse1.mm.bing.net/th/id/OIP.hp-H-rQ-JbCjQGFW1_lh1wHaE8?w=400',cat:'strength'},
+            '7':{title:'HIIT',icon:'fa-bolt',desc:'Haute intensité',exo:['Sprints 8x30s','Mountain 3x20','Sauts 3x15'],img:'jour7.jpeg',bg:'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400',cat:'cardio'},
+            '8':{title:'Haut du corps',icon:'fa-dumbbell',desc:'Dos/pec',exo:['DC 3x10','Tirage 3x12','Latérales 3x15'],img:'jour8.jpeg',bg:'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=400',cat:'strength'},
+            '9':{title:'Yoga',icon:'fa-spa',desc:'Mobilité',exo:['Postures 30min','Étirements 15min'],img:'jour9.jpeg',bg:'https://images.squarespace-cdn.com/content/v1/62635e9fbce1d12cfbbfe360/1659384251464-WWD0CVEQ54DA8WR123Q8/DSC06264.jpg?w=400',cat:'flexibility'},
+            '10':{title:'Full Body Force',icon:'fa-dumbbell',desc:'Complet',exo:['Squats 4x8','DC 4x8','SDT 3x6'],img:'jour10.jpeg',bg:'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400',cat:'strength'},
+            '11':{title:'Endurance',icon:'fa-road',desc:'Cardio long',exo:['Course 40min','Vélo 30min'],img:'jour11.jpeg',bg:'https://www.clever-fit.com/app/uploads/2022/10/34_clever_fit_2022_09_Print_KS_07011-3.jpg?w=400',cat:'cardio'},
+            '12':{title:'Récupération',icon:'fa-wind',desc:'Active',exo:['Marche 30min','Étirements 15min'],img:'jour12.jpeg',bg:'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400',cat:'flexibility'},
+            'facultatif':{title:'Facultatif',icon:'fa-plus-circle',desc:'Optionnel',exo:['HIIT 20min','Abdos 3x20'],img:'jour extra.jpeg',bg:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400',cat:'cardio'}
         };
 
-        // Gestion des semaines
-        const weekSelect = document.getElementById('week-select');
-        const randomizeBtn = document.getElementById('randomize-btn');
-        const grid = document.getElementById('programs-grid');
-        const userGrid = document.getElementById('user-programs-grid');
-        const trackingTableBody = document.getElementById('trackingTableBody');
-        const trackingCards = document.getElementById('trackingCards');
-        const currentWeekDisplay = document.getElementById('currentWeekDisplay');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const limitedAccess = document.getElementById('limited-access');
-        const guestPrograms = document.getElementById('guest-programs');
-        const loginAccessBtn = document.getElementById('loginAccessBtn');
+        const VALID_USERNAME = "Francois";
+        const VALID_PASSWORD = "Entrainement2025";
 
-        // Informations de connexion intégrées
-        const validCredentials = {
-            username: 'Francois',
-            password: 'Entrainement2025'
-        };
-
-        // Éléments de connexion
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const loginForm = document.getElementById('loginForm');
-        const cancelLogin = document.getElementById('cancelLogin');
-        const userInfo = document.getElementById('userInfo');
-        const userName = document.getElementById('userName');
-        const loginPromptBtn = document.getElementById('loginPromptBtn');
-        const loginCommentBtn = document.getElementById('loginCommentBtn');
-        const loginNavItem = document.getElementById('loginNavItem');
-
-        // Éléments de déconnexion
-        const logoutModal = document.getElementById('logoutModal');
-        const cancelLogout = document.getElementById('cancelLogout');
-        const confirmLogout = document.getElementById('confirmLogout');
-
-        // Éléments de statistiques
-        const completedWorkoutsEl = document.getElementById('completedWorkouts');
-        const completionRateEl = document.getElementById('completionRate');
-        const currentStreakEl = document.getElementById('currentStreak');
-
-        // Éléments de commentaires
-        const commentsList = document.getElementById('commentsList');
-        const userComments = document.getElementById('userComments');
-        const addCommentForm = document.getElementById('addCommentForm');
-        const commentText = document.getElementById('commentText');
-
-        // Vérifier si l'utilisateur est déjà connecté
-        function checkLoginStatus() {
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const savedUsername = localStorage.getItem('username');
-            
-            if (isLoggedIn && savedUsername) {
-                document.body.classList.add('logged-in');
-                loginBtn.style.display = 'none';
-                userInfo.style.display = 'flex';
-                userName.textContent = savedUsername;
-            } else {
-                document.body.classList.remove('logged-in');
-                loginBtn.style.display = 'block';
-                userInfo.style.display = 'none';
+        // ── SWITCH TABS ──────────────────────────────────────────
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('panel' + (tab === 'hebdo' ? 'Hebdo' : 'Defi')).classList.add('active');
+            document.getElementById('tab' + (tab === 'hebdo' ? 'Hebdo' : 'Defi')).classList.add('active');
+            if (tab === 'defi') {
+                // Scroll vers l'ancre défi
+                document.getElementById('fullbody').scrollIntoView({ behavior: 'smooth' });
             }
-            
-            // Mettre à jour l'affichage des programmes
-            updateGrid(weekSelect.value);
-            updateTrackingTable(weekSelect.value);
-            updateStats();
-            loadUserComments();
         }
 
-        // Gestion de la connexion
-        loginBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-        });
-
-        loginPromptBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-        });
-
-        loginCommentBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-        });
-
-        loginAccessBtn.addEventListener('click', () => {
-            loginModal.style.display = 'flex';
-        });
-
-        cancelLogin.addEventListener('click', () => {
-            loginModal.style.display = 'none';
-            loginForm.reset();
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username === validCredentials.username && password === validCredentials.password) {
-                // Connexion réussie
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('username', username);
-                
-                loginModal.style.display = 'none';
-                loginForm.reset();
-                
-                checkLoginStatus();
+        // ── VÉRIFICATION CONNEXION ───────────────────────────────
+        function checkLogin() {
+            const logged = localStorage.getItem('logged') === 'true' && localStorage.getItem('username') === VALID_USERNAME;
+            if (logged) {
+                document.body.classList.add('logged-in');
             } else {
-                alert('Nom d\'utilisateur ou mot de passe incorrect.');
+                document.body.classList.remove('logged-in');
+                localStorage.removeItem('logged');
             }
-        });
+            updateUI();
+        }
 
-        // Gestion de la déconnexion
-        userInfo.addEventListener('click', () => {
-            logoutModal.style.display = 'flex';
-        });
+        function updateUI() {
+            const isLogged = document.body.classList.contains('logged-in');
 
-        cancelLogout.addEventListener('click', () => {
-            logoutModal.style.display = 'none';
-        });
+            // Boutons header
+            document.getElementById('loginBtn').style.display = isLogged ? 'none' : 'block';
+            document.getElementById('userInfo').style.display = isLogged ? 'flex' : 'none';
+            if (isLogged) document.getElementById('userName').innerText = localStorage.getItem('username');
 
-        confirmLogout.addEventListener('click', () => {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('username');
-            logoutModal.style.display = 'none';
-            checkLoginStatus();
-        });
+            // Bouton Défi dans hero et onglet Défi
+            document.getElementById('heroDefiBtn').style.display = isLogged ? 'inline' : 'none';
+            document.getElementById('tabDefi').style.display = isLogged ? 'inline-block' : 'none';
 
-        // Fonctions pour les programmes
-        const getWeekPlan = (week) => {
-            const plans = JSON.parse(localStorage.getItem('weeklyPlans')) || {
-                1: ['1', '2', '3'],
-                2: ['4', '5', '6'],
-                3: ['7', '8', '9'],
-                4: ['10', '11', '12']
-            };
-            return plans[week] || ['1', '2', '3'];
-        };
+            // Sélecteur semaine : ajouter semaines 2-4 si connecté
+            const sel = document.getElementById('week-select');
+            sel.innerHTML = '<option value="1">Semaine 1 (J1-3)</option>';
+            if (isLogged) {
+                sel.innerHTML += '<option value="2">Semaine 2 (J4-6)</option>';
+                sel.innerHTML += '<option value="3">Semaine 3 (J7-9)</option>';
+                sel.innerHTML += '<option value="4">Semaine 4 (J10-12)</option>';
+                document.getElementById('locked-weeks').style.display = 'none';
+            } else {
+                document.getElementById('locked-weeks').style.display = 'block';
+            }
 
-        const saveWeekPlan = (week, days) => {
-            const plans = JSON.parse(localStorage.getItem('weeklyPlans')) || {};
-            plans[week] = days;
-            localStorage.setItem('weeklyPlans', JSON.stringify(plans));
-        };
+            // Si on était sur l'onglet défi et on se déconnecte → revenir hebdo
+            if (!isLogged && document.getElementById('panelDefi').classList.contains('active')) {
+                switchTab('hebdo');
+            }
 
-        const updateGrid = (week) => {
-            const isLoggedIn = document.body.classList.contains('logged-in');
+            updateWeekContent();
+            if (isLogged) { updateTracking(); loadWeightHistory(); loadNotes(); updateStats(); updateChallengeTracking(); }
+        }
+
+        // ── PLANS ────────────────────────────────────────────────
+        function getWeekPlan(week) {
+            const p = JSON.parse(localStorage.getItem('weeklyPlans')) || {1:['1','2','3'],2:['4','5','6'],3:['7','8','9'],4:['10','11','12']};
+            return p[week];
+        }
+
+        function updateWeekContent() {
+            const week = document.getElementById('week-select').value;
+            const isLogged = document.body.classList.contains('logged-in');
+
+            // Si non connecté et semaine > 1 (ne devrait pas arriver grâce au select)
+            if (!isLogged && week > 1) return;
+
             const days = getWeekPlan(week);
-            
-            // Gérer l'affichage selon le statut de connexion et la semaine sélectionnée
-            if (!isLoggedIn && week > 1) {
-                // Utilisateur non connecté essayant d'accéder aux semaines 2-4
-                guestPrograms.style.display = 'none';
-                limitedAccess.style.display = 'block';
-                return;
-            } else {
-                guestPrograms.style.display = 'block';
-                limitedAccess.style.display = 'none';
-            }
-            
-            // Mettre à jour la grille pour les utilisateurs non connectés (semaine 1 uniquement)
-            if (!isLoggedIn) {
-                grid.innerHTML = '';
-                
-                days.forEach((day, index) => {
-                    const card = document.createElement('div');
-                    card.classList.add('program-card');
-                    card.dataset.day = day;
-                    card.dataset.category = dayData[day].category;
-                    card.dataset.aos = 'zoom-in';
-                    
-                    const imageUrl = dayData[day].background;
-                    
-                    card.innerHTML = `
-                        <div class="program-img" style="background-image: url('${imageUrl}');"></div>
-                        <div class="program-content">
-                            <h3><i class="fas ${dayData[day].icon}"></i> Jour ${parseInt(day) + (week-1)*3} : ${dayData[day].title}</h3>
-                            <p>${dayData[day].description}</p>
-                            <ul>${dayData[day].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
-                            <div class="program-image-container">
-                                <img src="${dayData[day].image}" class="program-image" alt="Programme Jour ${parseInt(day) + (week-1)*3}" data-fullsrc="${dayData[day].image}">
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-                
-                // Ajouter le jour facultatif
+            const grid = document.getElementById('programs-grid');
+            grid.innerHTML = '';
+
+            days.forEach(d => {
                 const card = document.createElement('div');
-                card.classList.add('program-card');
-                card.dataset.day = 'facultatif';
-                card.dataset.category = dayData['facultatif'].category;
-                card.dataset.aos = 'zoom-in';
-                
-                const imageUrl = dayData['facultatif'].background;
-                
+                card.className = 'program-card';
+                card.dataset.category = dayData[d].cat;
                 card.innerHTML = `
-                    <div class="program-img" style="background-image: url('${imageUrl}');"></div>
+                    <div class="program-img" style="background-image:url('${dayData[d].bg}')"></div>
                     <div class="program-content">
-                        <h3><i class="fas ${dayData['facultatif'].icon}"></i> Jour Facultatif : ${dayData['facultatif'].title}</h3>
-                        <p>${dayData['facultatif'].description}</p>
-                        <ul>${dayData['facultatif'].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
-                        <div class="program-image-container">
-                            <img src="${dayData['facultatif'].image}" class="program-image" alt="Programme Jour Facultatif" data-fullsrc="${dayData['facultatif'].image}">
-                        </div>
-                    </div>
-                `;
+                        <h3><i class="fas ${dayData[d].icon}"></i> Jour ${parseInt(d) + (week - 1) * 3}: ${dayData[d].title}</h3>
+                        <p>${dayData[d].desc}</p>
+                        <ul>${dayData[d].exo.map(e => `<li><i class="fas fa-check" style="color:var(--success)"></i> ${e}</li>`).join('')}</ul>
+                        <div class="program-image-container"><img src="${dayData[d].img}" class="program-image" data-fullsrc="${dayData[d].img}" alt="programme"></div>
+                    </div>`;
                 grid.appendChild(card);
-            }
-            
-            // Mettre à jour la grille pour les utilisateurs connectés (toutes les semaines)
-            if (isLoggedIn) {
-                userGrid.innerHTML = '';
-                
-                days.forEach((day, index) => {
-                    const card = document.createElement('div');
-                    card.classList.add('program-card');
-                    card.dataset.day = day;
-                    card.dataset.category = dayData[day].category;
-                    card.dataset.aos = 'zoom-in';
-                    
-                    const imageUrl = dayData[day].background;
-                    
-                    card.innerHTML = `
-                        <div class="program-img" style="background-image: url('${imageUrl}');"></div>
-                        <div class="program-content">
-                            <h3><i class="fas ${dayData[day].icon}"></i> Jour ${parseInt(day) + (week-1)*3} : ${dayData[day].title}</h3>
-                            <p>${dayData[day].description}</p>
-                            <ul>${dayData[day].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
-                            <div class="program-image-container">
-                                <img src="${dayData[day].image}" class="program-image" alt="Programme Jour ${parseInt(day) + (week-1)*3}" data-fullsrc="${dayData[day].image}">
-                            </div>
-                        </div>
-                    `;
-                    userGrid.appendChild(card);
-                });
-                
-                // Ajouter le jour facultatif
-                const card = document.createElement('div');
-                card.classList.add('program-card');
-                card.dataset.day = 'facultatif';
-                card.dataset.category = dayData['facultatif'].category;
-                card.dataset.aos = 'zoom-in';
-                
-                const imageUrl = dayData['facultatif'].background;
-                
-                card.innerHTML = `
-                    <div class="program-img" style="background-image: url('${imageUrl}');"></div>
-                    <div class="program-content">
-                        <h3><i class="fas ${dayData['facultatif'].icon}"></i> Jour Facultatif : ${dayData['facultatif'].title}</h3>
-                        <p>${dayData['facultatif'].description}</p>
-                        <ul>${dayData['facultatif'].exercises.map(ex => `<li>${ex}</li>`).join('')}</ul>
-                        <div class="program-image-container">
-                            <img src="${dayData['facultatif'].image}" class="program-image" alt="Programme Jour Facultatif" data-fullsrc="${dayData['facultatif'].image}">
-                        </div>
-                    </div>
-                `;
-                userGrid.appendChild(card);
-            }
-            
-            AOS.refresh();
-        };
+            });
 
-        // Fonction pour mettre à jour le tableau de suivi
-        const updateTrackingTable = (week) => {
-            currentWeekDisplay.textContent = week;
-            trackingTableBody.innerHTML = '';
-            trackingCards.innerHTML = '';
-            
+            // Facultatif
+            const fcard = document.createElement('div');
+            fcard.className = 'program-card';
+            fcard.dataset.category = dayData['facultatif'].cat;
+            fcard.innerHTML = `
+                <div class="program-img" style="background-image:url('${dayData['facultatif'].bg}')"></div>
+                <div class="program-content">
+                    <h3><i class="fas ${dayData['facultatif'].icon}"></i> Jour Facultatif</h3>
+                    <p>${dayData['facultatif'].desc}</p>
+                    <ul>${dayData['facultatif'].exo.map(e => `<li><i class="fas fa-check" style="color:var(--success)"></i> ${e}</li>`).join('')}</ul>
+                    <div class="program-image-container"><img src="${dayData['facultatif'].img}" class="program-image" data-fullsrc="${dayData['facultatif'].img}" alt="facultatif"></div>
+                </div>`;
+            grid.appendChild(fcard);
+        }
+
+        // ── SUIVI HEBDOMADAIRE ───────────────────────────────────
+        function updateTracking() {
+            const week = document.getElementById('week-select').value;
+            document.getElementById('currentWeekDisplay').innerText = week;
             const days = getWeekPlan(week);
-            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
-            const weekData = trackingData[week] || {};
-            
-            days.forEach((day, index) => {
-                const dayNumber = parseInt(day) + (week-1)*3;
-                const dayTracking = weekData[dayNumber] || { completed: false, notes: '' };
-                
-                // Version Desktop (tableau)
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>Jour ${dayNumber}</td>
-                    <td>${dayData[day].title}</td>
-                    <td><input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="${dayNumber}" data-week="${week}"></td>
-                    <td><textarea data-day="${dayNumber}" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea></td>
-                    <td><button class="save-btn" data-day="${dayNumber}" data-week="${week}">Enregistrer</button></td>
-                `;
-                trackingTableBody.appendChild(row);
-                
-                // Version Mobile (cartes)
-                const card = document.createElement('div');
-                card.classList.add('tracking-card');
-                card.innerHTML = `
-                    <div class="tracking-card-header">
-                        <div class="tracking-card-title">Jour ${dayNumber} : ${dayData[day].title}</div>
-                    </div>
-                    <div class="tracking-card-content">
-                        <div class="tracking-card-field">
-                            <label>Réalisé :</label>
-                            <div class="tracking-card-checkbox">
-                                <input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="${dayNumber}" data-week="${week}">
-                                <span>Séance terminée</span>
-                            </div>
-                        </div>
-                        <div class="tracking-card-field">
-                            <label>Notes :</label>
-                            <textarea data-day="${dayNumber}" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea>
-                        </div>
-                        <button class="save-btn" data-day="${dayNumber}" data-week="${week}">Enregistrer</button>
-                    </div>
-                `;
-                trackingCards.appendChild(card);
+            const tracking = JSON.parse(localStorage.getItem('tracking')) || {};
+            const weekData = tracking[week] || {};
+            const tbody = document.getElementById('trackingTableBody');
+            const cards = document.getElementById('trackingCards');
+            tbody.innerHTML = ''; cards.innerHTML = '';
+            days.forEach(d => {
+                const dayNum = parseInt(d) + (week - 1) * 3;
+                const data = weekData[dayNum] || {done: false, notes: ''};
+                tbody.insertAdjacentHTML('beforeend', `<tr><td>Jour ${dayNum}</td><td>${dayData[d].title}</td><td><input type="checkbox" class="chk-track" data-week="${week}" data-day="${dayNum}" ${data.done ? 'checked' : ''}></td><td><textarea class="notes-track" data-week="${week}" data-day="${dayNum}">${data.notes}</textarea></td><td><button class="saveTrackBtn btn" style="font-size:0.7rem;padding:0.3rem 0.7rem" data-week="${week}" data-day="${dayNum}">Save</button></td></tr>`);
+                cards.insertAdjacentHTML('beforeend', `<div class="tracking-card"><strong>Jour ${dayNum} — ${dayData[d].title}</strong><div style="margin:0.4rem 0"><label>✅ Fait <input type="checkbox" class="chk-track" data-week="${week}" data-day="${dayNum}" ${data.done ? 'checked' : ''}></label></div><div><label>📝 Notes</label><textarea class="notes-track" data-week="${week}" data-day="${dayNum}">${data.notes}</textarea></div><button class="saveTrackBtn btn" style="margin-top:0.5rem;font-size:0.8rem" data-week="${week}" data-day="${dayNum}">Enregistrer</button></div>`);
             });
-            
-            // Ajouter le jour facultatif
-            const dayTracking = weekData['facultatif'] || { completed: false, notes: '' };
-            
-            // Version Desktop (tableau)
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>Jour Facultatif</td>
-                <td>${dayData['facultatif'].title}</td>
-                <td><input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="facultatif" data-week="${week}"></td>
-                <td><textarea data-day="facultatif" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea></td>
-                <td><button class="save-btn" data-day="facultatif" data-week="${week}">Enregistrer</button></td>
-            `;
-            trackingTableBody.appendChild(row);
-            
-            // Version Mobile (cartes)
-            const card = document.createElement('div');
-            card.classList.add('tracking-card');
-            card.innerHTML = `
-                <div class="tracking-card-header">
-                    <div class="tracking-card-title">Jour Facultatif : ${dayData['facultatif'].title}</div>
-                </div>
-                <div class="tracking-card-content">
-                    <div class="tracking-card-field">
-                        <label>Réalisé :</label>
-                        <div class="tracking-card-checkbox">
-                            <input type="checkbox" ${dayTracking.completed ? 'checked' : ''} data-day="facultatif" data-week="${week}">
-                            <span>Séance terminée</span>
-                        </div>
-                    </div>
-                    <div class="tracking-card-field">
-                        <label>Notes :</label>
-                        <textarea data-day="facultatif" data-week="${week}" placeholder="Notes sur votre séance...">${dayTracking.notes}</textarea>
-                    </div>
-                    <button class="save-btn" data-day="facultatif" data-week="${week}">Enregistrer</button>
-                </div>
-            `;
-            trackingCards.appendChild(card);
-            
-            // Ajouter des écouteurs d'événements pour les boutons d'enregistrement
-            document.querySelectorAll('.save-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const day = this.dataset.day;
-                    const week = this.dataset.week;
-                    const checkbox = document.querySelector(`input[data-day="${day}"][data-week="${week}"]`);
-                    const textarea = document.querySelector(`textarea[data-day="${day}"][data-week="${week}"]`);
-                    
-                    saveTrackingData(week, day, checkbox.checked, textarea.value);
-                    updateStats();
-                    alert('Données enregistrées avec succès!');
-                });
-            });
-        };
+            // Facultatif
+            const facData = weekData['facultatif'] || {done: false, notes: ''};
+            tbody.insertAdjacentHTML('beforeend', `<tr><td>Facultatif</td><td>Séance libre</td><td><input type="checkbox" class="chk-track" data-week="${week}" data-day="facultatif" ${facData.done ? 'checked' : ''}></td><td><textarea class="notes-track" data-week="${week}" data-day="facultatif">${facData.notes}</textarea></td><td><button class="saveTrackBtn btn" style="font-size:0.7rem;padding:0.3rem 0.7rem" data-week="${week}" data-day="facultatif">Save</button></td></tr>`);
+            cards.insertAdjacentHTML('beforeend', `<div class="tracking-card"><strong>Facultatif</strong><div style="margin:0.4rem 0"><label>✅ Fait <input type="checkbox" class="chk-track" data-week="${week}" data-day="facultatif" ${facData.done ? 'checked' : ''}></label></div><div><textarea class="notes-track" data-week="${week}" data-day="facultatif">${facData.notes}</textarea></div><button class="saveTrackBtn btn" style="margin-top:0.5rem" data-week="${week}" data-day="facultatif">Enregistrer</button></div>`);
 
-        // Fonction pour sauvegarder les données de suivi
-        const saveTrackingData = (week, day, completed, notes) => {
-            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
-            if (!trackingData[week]) trackingData[week] = {};
-            
-            trackingData[week][day] = {
-                completed: completed,
-                notes: notes
-            };
-            
-            localStorage.setItem('trackingData', JSON.stringify(trackingData));
-        };
+            document.querySelectorAll('.saveTrackBtn').forEach(btn => btn.addEventListener('click', function () {
+                const w = this.dataset.week, d = this.dataset.day;
+                const chk = document.querySelector(`.chk-track[data-week="${w}"][data-day="${d}"]`);
+                const txt = document.querySelector(`.notes-track[data-week="${w}"][data-day="${d}"]`);
+                let track = JSON.parse(localStorage.getItem('tracking')) || {};
+                if (!track[w]) track[w] = {};
+                track[w][d] = {done: chk.checked, notes: txt.value};
+                localStorage.setItem('tracking', JSON.stringify(track));
+                updateStats();
+                alert('Enregistré ✅');
+            }));
+        }
 
-        // Fonction pour mettre à jour les statistiques
-        const updateStats = () => {
-            const trackingData = JSON.parse(localStorage.getItem('trackingData')) || {};
-            let completedCount = 0;
-            let totalCount = 0;
-            let currentStreak = 0;
-            
-            // Calculer les statistiques
-            Object.keys(trackingData).forEach(week => {
-                Object.keys(trackingData[week]).forEach(day => {
-                    totalCount++;
-                    if (trackingData[week][day].completed) {
-                        completedCount++;
-                    }
-                });
-            });
-            
-            // Calculer le streak (simplifié)
-            const weeks = Object.keys(trackingData).sort();
-            for (let i = weeks.length - 1; i >= 0; i--) {
-                const week = weeks[i];
-                const days = Object.keys(trackingData[week]);
-                const completedDays = days.filter(day => trackingData[week][day].completed);
-                if (completedDays.length >= 3) {
-                    currentStreak++;
-                } else {
-                    break;
-                }
+        function updateStats() {
+            let total = 0, done = 0;
+            const tracking = JSON.parse(localStorage.getItem('tracking')) || {};
+            Object.values(tracking).forEach(w => Object.values(w).forEach(s => { total++; if (s.done) done++; }));
+            document.getElementById('completedWorkouts').innerText = done;
+            document.getElementById('completionRate').innerText = total ? Math.round(done / total * 100) + '%' : '0%';
+            document.getElementById('currentStreak').innerText = Math.floor(done / 3);
+        }
+
+        // ── POIDS & NOTES ────────────────────────────────────────
+        function loadWeightHistory() {
+            const weights = JSON.parse(localStorage.getItem('weightHistory')) || [];
+            document.getElementById('weightHistory').innerHTML = weights.map(w => `<div>${w.date} : <strong>${w.weight} kg</strong></div>`).join('');
+        }
+        document.getElementById('saveWeightBtn')?.addEventListener('click', () => {
+            const w = document.getElementById('weightInput').value;
+            if (w) {
+                let hist = JSON.parse(localStorage.getItem('weightHistory')) || [];
+                hist.push({date: new Date().toLocaleDateString(), weight: parseFloat(w)});
+                localStorage.setItem('weightHistory', JSON.stringify(hist));
+                loadWeightHistory();
+                document.getElementById('weightInput').value = '';
             }
-            
-            // Mettre à jour l'affichage
-            completedWorkoutsEl.textContent = completedCount;
-            completionRateEl.textContent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) + '%' : '0%';
-            currentStreakEl.textContent = currentStreak;
-        };
+        });
+        function loadNotes() { document.getElementById('personalNotes').value = localStorage.getItem('personalNotes') || ''; }
+        document.getElementById('saveNotesBtn')?.addEventListener('click', () => { localStorage.setItem('personalNotes', document.getElementById('personalNotes').value); alert('Notes sauvegardées ✅'); });
 
-        // Fonction pour charger les commentaires de l'utilisateur
-        const loadUserComments = () => {
-            const comments = JSON.parse(localStorage.getItem('userComments')) || [];
-            userComments.innerHTML = '';
-            
-            comments.forEach(comment => {
-                const commentEl = document.createElement('div');
-                commentEl.classList.add('comment');
-                commentEl.innerHTML = `
-                    <div class="comment-header">
-                        <span class="comment-author">${comment.author}</span>
-                        <span class="comment-date">${comment.date}</span>
-                    </div>
-                    <p class="comment-text">${comment.text}</p>
-                `;
-                userComments.appendChild(commentEl);
-            });
-        };
-
-        // Fonction pour ajouter un commentaire
-        addCommentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const text = commentText.value.trim();
-            if (!text) return;
-            
-            const username = localStorage.getItem('username');
-            const date = new Date().toLocaleDateString('fr-FR');
-            
-            const newComment = {
-                author: username,
-                date: date,
-                text: text
+        // ── SUIVI DÉFI ───────────────────────────────────────────
+        function updateChallengeTracking() {
+            let chall = JSON.parse(localStorage.getItem('challengeTracking')) || {day1: false, day2: false, day3: false};
+            document.getElementById('challengeTracking').innerHTML = `
+                <label style="display:block;margin:0.4rem 0"><input type="checkbox" id="chDay1" ${chall.day1 ? 'checked' : ''}> 🔥 Jour 1 — Fondations</label>
+                <label style="display:block;margin:0.4rem 0"><input type="checkbox" id="chDay2" ${chall.day2 ? 'checked' : ''}> ⚡ Jour 2 — Performance</label>
+                <label style="display:block;margin:0.4rem 0"><input type="checkbox" id="chDay3" ${chall.day3 ? 'checked' : ''}> 💪 Jour 3 — Elite</label>`;
+        }
+        document.getElementById('saveChallengeBtn')?.addEventListener('click', () => {
+            const track = {
+                day1: document.getElementById('chDay1')?.checked || false,
+                day2: document.getElementById('chDay2')?.checked || false,
+                day3: document.getElementById('chDay3')?.checked || false
             };
-            
-            const comments = JSON.parse(localStorage.getItem('userComments')) || [];
-            comments.push(newComment);
-            localStorage.setItem('userComments', JSON.stringify(comments));
-            
-            commentText.value = '';
-            loadUserComments();
-            alert('Commentaire publié avec succès!');
+            localStorage.setItem('challengeTracking', JSON.stringify(track));
+            alert('Progression défi enregistrée ✅');
         });
 
-        // Filtrage des programmes
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Retirer la classe active de tous les boutons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Ajouter la classe active au bouton cliqué
+        // ── FILTRES HEBDOMADAIRES ────────────────────────────────
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
                 const filter = this.dataset.filter;
-                const cards = document.querySelectorAll('.program-card');
-                
-                cards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                document.querySelectorAll('#programs-grid .program-card').forEach(c => {
+                    c.style.display = (filter === 'all' || c.dataset.category === filter) ? 'block' : 'none';
                 });
             });
         });
 
-        // Randomisation
-        randomizeBtn.addEventListener('click', () => {
-            const week = weekSelect.value;
-            const allDays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            const weekDays = allDays.slice((week-1)*3, (week-1)*3+3);
-            const shuffledDays = weekDays.sort(() => Math.random() - 0.5);
-            saveWeekPlan(week, shuffledDays);
-            updateGrid(week);
-            updateTrackingTable(week);
-        });
-
-        // Sélection de la semaine
-        weekSelect.addEventListener('change', () => {
-            const week = weekSelect.value;
-            updateGrid(week);
-            updateTrackingTable(week);
-        });
-
-        // Modal pour images
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementsByClassName('close')[0];
-
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('program-image')) {
-                modal.style.display = 'flex';
-                modalImg.src = e.target.dataset.fullsrc;
+        // ── CONNEXION / DÉCONNEXION ──────────────────────────────
+        document.getElementById('loginBtn').addEventListener('click', () => document.getElementById('loginModal').style.display = 'flex');
+        document.getElementById('cancelLogin').addEventListener('click', () => document.getElementById('loginModal').style.display = 'none');
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            if (u === VALID_USERNAME && p === VALID_PASSWORD) {
+                localStorage.setItem('logged', 'true');
+                localStorage.setItem('username', u);
+                document.getElementById('loginModal').style.display = 'none';
+                checkLogin();
+            } else {
+                alert('Identifiants incorrects');
             }
         });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+        document.getElementById('userInfo').addEventListener('click', () => document.getElementById('logoutModal').style.display = 'flex');
+        document.getElementById('cancelLogout').addEventListener('click', () => document.getElementById('logoutModal').style.display = 'none');
+        document.getElementById('confirmLogout').addEventListener('click', () => {
+            localStorage.removeItem('logged');
+            localStorage.removeItem('username');
+            document.getElementById('logoutModal').style.display = 'none';
+            checkLogin();
         });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === modal || e.target === loginModal || e.target === logoutModal) {
-                modal.style.display = 'none';
-                loginModal.style.display = 'none';
-                logoutModal.style.display = 'none';
+        // ── NAVIGATION LIEN DÉFI DEPUIS NAV ─────────────────────
+        document.querySelectorAll('a[href="#fullbody"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                switchTab('defi');
+                setTimeout(() => document.getElementById('programmes').scrollIntoView({behavior:'smooth'}), 50);
+            });
+        });
+
+        // ── SEMAINE SELECT ───────────────────────────────────────
+        document.getElementById('week-select').addEventListener('change', () => {
+            updateWeekContent();
+            if (document.body.classList.contains('logged-in')) updateTracking();
+        });
+
+        // ── MODALS IMAGE ─────────────────────────────────────────
+        document.querySelectorAll('.close-modal').forEach(c => c.addEventListener('click', () => document.getElementById('imageModal').style.display = 'none'));
+        document.addEventListener('click', e => {
+            if (e.target.classList.contains('program-image') || e.target.classList.contains('defi-bottom-image')) {
+                document.getElementById('modalImage').src = e.target.dataset.fullsrc;
+                document.getElementById('imageModal').style.display = 'flex';
             }
         });
+        window.addEventListener('click', e => { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; });
 
-        // Initialisation
-        checkLoginStatus();
-        updateGrid(1);
-        updateTrackingTable(1);
-        updateStats();
+        // ── INIT ─────────────────────────────────────────────────
+        checkLogin();
     </script>
 </body>
 </html>
