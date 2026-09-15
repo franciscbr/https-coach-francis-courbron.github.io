@@ -11,8 +11,9 @@
             --card: rgba(22, 31, 58, .88);
             --text: #f5f7ff;
             --muted: #aeb9d6;
-            --accent: #72f2b8;
-            --accent-dark: #173d35;
+            --accent: #ff8a3d;
+            --accent-dark: #4a1d08;
+            --warning: #ff5c5c;
         }
 
         * { box-sizing: border-box; }
@@ -53,7 +54,17 @@
             border-radius: 999px;
             transition: transform .2s ease, box-shadow .2s ease;
         }
-        .button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(114, 242, 184, .25); }
+        .button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 138, 61, .3); }
+        .warning {
+            margin: 0 auto 20px;
+            padding: 12px 16px;
+            color: #ffd6d6;
+            font-size: .9rem;
+            line-height: 1.5;
+            background: rgba(255, 92, 92, .14);
+            border: 1px solid rgba(255, 92, 92, .5);
+            border-radius: 12px;
+        }
         .note { margin-top: 22px; font-size: .8rem; color: #7f8caf; }
     </style>
 </head>
@@ -62,9 +73,9 @@
         <div class="logo">FitSphere<span>+</span></div>
         <h1>Votre prochaine évolution commence ici.</h1>
         <p>Retrouvez votre espace dédié pour découvrir nos nouveautés, suivre votre progression et passer à l’action.</p>
-        <a class="button" href="https://fitsphereplus.neyxora.com/">Accéder à la plateforme&nbsp; →</a>
+        <div class="warning" role="alert">⚠️ Attention : ce bouton redirige vers un site externe.</div>
+        <a class="button" href="https://fitsphereplus.neyxora.com/" target="_blank" rel="noopener noreferrer" onclick="return confirm('Vous allez être redirigé vers un site externe. Voulez-vous continuer ?');">Accéder à la plateforme&nbsp; →</a>
         <div class="note">Simple. Moderne. Pensé pour vos objectifs.</div>
     </main>
 </body>
 </html>
- 
