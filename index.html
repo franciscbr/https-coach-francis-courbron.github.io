@@ -2,6 +2,75 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitSphere+ | Accès à la plateforme</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --background: #0b1020;
+            --card: rgba(22, 31, 58, .88);
+            --text: #f5f7ff;
+            --muted: #aeb9d6;
+            --accent: #72f2b8;
+            --accent-dark: #173d35;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top right, #263e70 0, transparent 38%), var(--background);
+        }
+
+        .card {
+            width: min(100%, 560px);
+            padding: clamp(32px, 7vw, 64px);
+            text-align: center;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 28px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+            backdrop-filter: blur(14px);
+        }
+
+        .logo { font-size: 2rem; font-weight: 800; letter-spacing: -.06em; }
+        .logo span { color: var(--accent); }
+        h1 { margin: 28px 0 14px; font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.05; }
+        p { margin: 0 auto 32px; max-width: 410px; color: var(--muted); line-height: 1.7; }
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            color: var(--accent-dark);
+            font-weight: 800;
+            text-decoration: none;
+            background: var(--accent);
+            border-radius: 999px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(114, 242, 184, .25); }
+        .note { margin-top: 22px; font-size: .8rem; color: #7f8caf; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <div class="logo">FitSphere<span>+</span></div>
+        <h1>Votre prochaine évolution commence ici.</h1>
+        <p>Retrouvez votre espace dédié pour découvrir nos nouveautés, suivre votre progression et passer à l’action.</p>
+        <a class="button" href="https://fitsphereplus.neyxora.com/">Accéder à la plateforme&nbsp; →</a>
+        <div class="note">Simple. Moderne. Pensé pour vos objectifs.</div>
+    </main>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Programmes d'entraînement personnalisés par Francis Courbron, coach sportif spécialisé en perte de poids et remise en forme.">
     <title>Programme d'Entraînement - Francis Courbron</title>
@@ -1082,4 +1151,4 @@
         checkLogin();
     </script>
 </body>
-</html>
+</html> -->
